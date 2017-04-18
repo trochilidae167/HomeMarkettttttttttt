@@ -1,4 +1,4 @@
-namespace HomeMarket.Models
+﻿namespace HomeMarket.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,14 +12,18 @@ namespace HomeMarket.Models
         public int Id { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Mã thực phẩm")]
         public string MaThucPham { get; set; }
 
         [StringLength(250)]
+        [Display(Name ="Tên thực phẩm")]
         public string TenThucPham { get; set; }
 
         [StringLength(50)]
+        [Display(Name ="Loại thực phẩm")]
         public string LoaiThucPham { get; set; }
 
+        [Display(Name ="Giá")]
         public double? GiaThucPham { get; set; }
     }
 }

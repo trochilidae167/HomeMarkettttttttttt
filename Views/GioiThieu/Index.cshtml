@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<HomeMarket.Models.BangGiaSieuThi>
+﻿@model PagedList.IPagedList<HomeMarket.Models.GioiThieu>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -7,7 +7,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
- 
+@section header{
+    Index
+}  
 
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -41,13 +43,17 @@
 	<th>@Html.ActionLink("SortAble Attribute", "Index", new { sortOrder = ViewBag.sortAttribute , currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>--> 
 	<th></th>
 	
-        <th>Mã thực phẩm</th>
+        <th>>@Html.ActionLink("Tiêu đề", "Index", new { sortOrder = ViewBag.Ten, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
-        <th>Tên thực phẩm</th>
+      
 		
-        <th>@Html.ActionLink("Loại thực phẩm", "Index", new { sortOrder = ViewBag.Loai, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
+        <th>>@Html.ActionLink("Ngày tạo", "Index", new { sortOrder = ViewBag.NgayTao, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
-        <th>@Html.ActionLink("Giá thực phẩm", "Index", new { sortOrder = ViewBag.Gia, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
+        <th>Người sử dụng</th>
+		
+        <th>Khách hàng</th>
+		
+        <th>Người đi chợ</th>
 		
         
     </tr>
@@ -65,10 +71,11 @@
 				<i class="fa fa-trash"></i>			        
 			</a>			
         </td>
-        <td>@Html.DisplayFor(modelItem => item.MaThucPham)</td>
-        <td>@Html.DisplayFor(modelItem => item.TenThucPham)</td>
-        <td>@Html.DisplayFor(modelItem => item.LoaiThucPham)</td>
-        <td>@Html.DisplayFor(modelItem => item.GiaThucPham)</td>
+        <td>@Html.DisplayFor(modelItem => item.Ten)</td>
+        <td>@Html.DisplayFor(modelItem => item.NgayTao)</td>
+        <td>@Html.DisplayFor(modelItem => item.NguoiSuDung)</td>
+        <td>@Html.DisplayFor(modelItem => item.KhachHang)</td>
+        <td>@Html.DisplayFor(modelItem => item.NguoiDiCho)</td>
 
     </tr>
 }

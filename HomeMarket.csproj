@@ -137,10 +137,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\APIController\BangGiaSieuThiAPIController.cs" />
+    <Compile Include="Controllers\BangGiaChoController.cs" />
     <Compile Include="Controllers\BangGiaSieuThiController.cs" />
+    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KhachHangAPIController.cs" />
+    <Compile Include="Controllers\APIController\KhachHangAPIController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\NguoiDiChoController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -164,6 +168,10 @@
     <Compile Include="Migrations\201703311243163_test2.cs" />
     <Compile Include="Migrations\201703311243163_test2.Designer.cs">
       <DependentUpon>201703311243163_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704090831302_Update-GioiThieu.cs" />
+    <Compile Include="Migrations\201704090831302_Update-GioiThieu.Designer.cs">
+      <DependentUpon>201704090831302_Update-GioiThieu.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
@@ -209,6 +217,21 @@
     <Content Include="Views\KhachHang\Details.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\BangGiaCho\Create.cshtml" />
+    <Content Include="Views\BangGiaCho\Delete.cshtml" />
+    <Content Include="Views\BangGiaCho\Details.cshtml" />
+    <Content Include="Views\BangGiaCho\Edit.cshtml" />
+    <Content Include="Views\BangGiaCho\Index.cshtml" />
+    <Content Include="Views\GioiThieu\Create.cshtml" />
+    <Content Include="Views\GioiThieu\Delete.cshtml" />
+    <Content Include="Views\GioiThieu\Details.cshtml" />
+    <Content Include="Views\GioiThieu\Edit.cshtml" />
+    <Content Include="Views\GioiThieu\Index.cshtml" />
+    <Content Include="Views\NguoiDiCho\Create.cshtml" />
+    <Content Include="Views\NguoiDiCho\Delete.cshtml" />
+    <Content Include="Views\NguoiDiCho\Details.cshtml" />
+    <Content Include="Views\NguoiDiCho\Edit.cshtml" />
+    <Content Include="Views\NguoiDiCho\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -240,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703311243163_test2.resx">
       <DependentUpon>201703311243163_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704090831302_Update-GioiThieu.resx">
+      <DependentUpon>201704090831302_Update-GioiThieu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -55,3 +55,4 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\bin\System.Web.Http.WebHost.xml
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.dll
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.pdb
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.csprojResolveAssemblyReference.cache
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.UpdateGioiThieu.resources

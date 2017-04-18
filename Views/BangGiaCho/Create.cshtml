@@ -1,26 +1,28 @@
-﻿@model HomeMarket.Models.BangGiaSieuThi
+﻿@model HomeMarket.Models.BangGiaCho
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
+
+@section header{
+    Tạo mới
+}
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">            
+            <div class="ibox float-e-margins">
                 <div class="ibox-content">
 
-				@using (Html.BeginForm())
+				@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
             @Html.LabelFor(model => model.MaThucPham, new { @class = "control-label col-md-2" })
@@ -56,13 +58,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                <input type="submit" value="Tạo mới" class="btn btn-primary" />
 				@Html.ActionLink("Hủy bỏ", "Index", null, new { @class = "btn btn-danger"})
             </div>
         </div>
     </div>
 }
-
 
                 </div>
             </div>
@@ -70,4 +71,4 @@
     </div>
  </div>
 
-
+ 
