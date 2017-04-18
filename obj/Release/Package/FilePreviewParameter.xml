@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/HomeMarket" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Vu\\TLTN\\Server\\HomeMarket\\HomeMarket\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Vu\\TLTN\\Server\\HomeMarket\\HomeMarket\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="HomeMarketDbContext-Web.config Connection String" description="" value="data source=ANHVU\SQLEXPRESS;initial catalog=HomeMarket;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Vu\\TLTN\\Server\\HomeMarket\\HomeMarket\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HomeMarketDbContext']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,94 @@
+﻿@model HomeMarket.Models.GioiThieu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+@section header{
+    Chi tiết
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">              
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiSuDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiSuDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiDiCho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDiCho)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

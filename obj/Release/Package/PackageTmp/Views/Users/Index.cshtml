@@ -1,0 +1,115 @@
+﻿@model PagedList.IPagedList<HomeMarket.Models.User>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content table-responsive">
+				 @using (Html.BeginForm())
+                 {
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <div class="col-md-4">
+                                <div class="search">
+                                    @Html.TextBox("SearchString", null, new { @class = "text-box single-line", @placeholder = "Gõ để tìm kiếm...", @autofocus = "" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="@Url.Action("Create" )" title="Tạo Mới" class="btn btn-primary btn-sm">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Tạo mới</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                       
+
+                    }
+<table class="table table-bordered table-striped">
+    <tr>
+	<!-- Mẫu cột có thể sắp xếp, thay đổi Sortable Attribue, và ViewBag.sortAttribute cho phù hợp với dữ liệu phía controller
+	<th>@Html.ActionLink("SortAble Attribute", "Index", new { sortOrder = ViewBag.sortAttribute , currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>--> 
+	<th></th>
+	
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        <th>Tên Cột</th>
+		
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+			<a href="@Url.Action("Details", new { id=item.Id })" title="Chi Tiết" class="btn btn-white btn-sm">
+				<i class="fa fa-eye"></i>			        
+			</a>
+			<a href="@Url.Action("Edit", new { id=item.Id })"  title="Sửa" class="btn btn-primary btn-sm">
+				<i class="fa fa-pencil"></i>			        
+			</a>
+			<a href="@Url.Action("Delete", new { id=item.Id })"  title="Xóa" class="btn btn-danger btn-sm">
+				<i class="fa fa-trash"></i>			        
+			</a>			
+        </td>
+        <td>@Html.DisplayFor(modelItem => item.Ma)</td>
+        <td>@Html.DisplayFor(modelItem => item.Ten)</td>
+        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+        <td>@Html.DisplayFor(modelItem => item.Password)</td>
+        <td>@Html.DisplayFor(modelItem => item.HinhAnh)</td>
+        <td>@Html.DisplayFor(modelItem => item.NgaySinh)</td>
+        <td>@Html.DisplayFor(modelItem => item.QuocTich)</td>
+        <td>@Html.DisplayFor(modelItem => item.SDT)</td>
+        <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+        <td>@Html.DisplayFor(modelItem => item.GroupID)</td>
+        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+        <td>@Html.DisplayFor(modelItem => item.NgayDangKy)</td>
+
+    </tr>
+}
+
+</table>
+		@Html.PagedListPager(Model, page => Url.Action("Index",
+                                                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}),
+                                                        new PagedListRenderOptions { ContainerDivClasses = new String[] { "pagination-container, text-center" }})
+		<p class="text-center">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount  </p>
+                                        
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+

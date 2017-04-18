@@ -232,6 +232,7 @@
     <Content Include="Views\NguoiDiCho\Details.cshtml" />
     <Content Include="Views\NguoiDiCho\Edit.cshtml" />
     <Content Include="Views\NguoiDiCho\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\HomeMarket.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
