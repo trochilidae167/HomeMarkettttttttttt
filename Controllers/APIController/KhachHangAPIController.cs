@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Services;
 using System.Web.Http;
 using System.Web.Http.Description;
 using HomeMarket.Models;
@@ -78,9 +79,10 @@ namespace HomeMarket.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            
             db.KhachHang.Add(khachHang);
             db.SaveChanges();
+
 
             return CreatedAtRoute("DefaultApi", new { id = khachHang.Id }, khachHang);
         }

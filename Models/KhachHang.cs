@@ -26,6 +26,15 @@
         [Display(Name = "Tên khách hàng")]
         public string Ten { get; set; }
 
+
+        [StringLength(50)]
+        [Display(Name = "Tài khoản")]
+        public string UserName { get; set; }
+
+        [StringLength(32)]
+        [Display(Name = "Mật khẩu")]
+        public string Password { get; set; }
+
         [StringLength(1024)]
         [Display(Name = "Avatar")]
         public string HinhAnh { get; set; }

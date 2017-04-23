@@ -19,6 +19,14 @@
         [Display(Name = "Họ và tên")]
         public string Ten { get; set; }
 
+        [StringLength(50)]
+        [Display(Name = "Tài khoản")]
+        public string UserName { get; set; }
+
+        [StringLength(32)]
+        [Display(Name = "Mật khẩu")]
+        public string Password { get; set; }
+
         [StringLength(1024)]
         [Display(Name = "Hình ảnh")]
         public string HinhAnh { get; set; }

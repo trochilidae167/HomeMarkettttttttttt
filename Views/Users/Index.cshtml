@@ -40,31 +40,22 @@
 	<th>@Html.ActionLink("SortAble Attribute", "Index", new { sortOrder = ViewBag.sortAttribute , currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>--> 
 	<th></th>
 	
-        <th>Tên Cột</th>
+        <th>@Html.ActionLink("Mã", "Index", new { sortOrder = ViewBag.Ma, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
-        <th>Tên Cột</th>
+        <th>Họ và tên</th>
 		
-        <th>Tên Cột</th>
+        <th>Tài khoản</th>
 		
-        <th>Tên Cột</th>
+        <th>Hình ảnh</th>
 		
-        <th>Tên Cột</th>
+        <th>SĐT</th>
 		
-        <th>Tên Cột</th>
+        <th>Email</th>
 		
-        <th>Tên Cột</th>
+        <th>Trạng thái</th>
 		
-        <th>Tên Cột</th>
+        <th>@Html.ActionLink("Ngày đăng ký", "Index", new { sortOrder = ViewBag.NgayDangKy, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
-        <th>Tên Cột</th>
-		
-        <th>Tên Cột</th>
-		
-        <th>Tên Cột</th>
-		
-        <th>Tên Cột</th>
-		
-        <th>Tên Cột</th>
 		
         
     </tr>
@@ -85,14 +76,9 @@
         <td>@Html.DisplayFor(modelItem => item.Ma)</td>
         <td>@Html.DisplayFor(modelItem => item.Ten)</td>
         <td>@Html.DisplayFor(modelItem => item.UserName)</td>
-        <td>@Html.DisplayFor(modelItem => item.Password)</td>
         <td>@Html.DisplayFor(modelItem => item.HinhAnh)</td>
-        <td>@Html.DisplayFor(modelItem => item.NgaySinh)</td>
-        <td>@Html.DisplayFor(modelItem => item.QuocTich)</td>
         <td>@Html.DisplayFor(modelItem => item.SDT)</td>
-        <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
         <td>@Html.DisplayFor(modelItem => item.Email)</td>
-        <td>@Html.DisplayFor(modelItem => item.GroupID)</td>
         <td>@Html.DisplayFor(modelItem => item.Status)</td>
         <td>@Html.DisplayFor(modelItem => item.NgayDangKy)</td>
 

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HomeMarket.Models;
+using HomeMarket.Common;
 using PagedList;
 
 namespace HomeMarket.Controllers
@@ -92,7 +93,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham")] BangGiaSieuThi bangGiaSieuThi)
+        public ActionResult Create([Bind(Include="Id,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham,Status")] BangGiaSieuThi bangGiaSieuThi)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +105,8 @@ namespace HomeMarket.Controllers
             return View(bangGiaSieuThi);
         }
 
-        // GET: /BangGiaSieuThi/Edit/5
+        // GET: /BangGiaSieuThi/Edit/5\
+        [HasCredential(RoleID = "EDIT_BANGGIA")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -124,7 +126,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham")] BangGiaSieuThi bangGiaSieuThi)
+        public ActionResult Edit([Bind(Include= "Id,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham,Status")] BangGiaSieuThi bangGiaSieuThi)
         {
             if (ModelState.IsValid)
             {
@@ -136,6 +138,7 @@ namespace HomeMarket.Controllers
         }
 
         // GET: /BangGiaSieuThi/Delete/5
+        [HasCredential(RoleID = "DELETE_BANGGIA")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

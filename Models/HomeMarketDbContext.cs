@@ -15,7 +15,8 @@ namespace HomeMarket.Models
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<BangGiaCho> BangGiaCho { get; set; }
         public virtual DbSet<BangGiaSieuThi> BangGiaSieuThi { get; set; }
-        public virtual DbSet<DonHang> DonHangs { get; set; }
+        public virtual DbSet<Credential> Credential { get; set; }
+        public virtual DbSet<DonHang> DonHang { get; set; }
         public virtual DbSet<DonHangChiTiet> DonHangChiTiet { get; set; }
         public virtual DbSet<GiaDonHang> GiaDonHang { get; set; }
         public virtual DbSet<GioiThieu> GioiThieu { get; set; }

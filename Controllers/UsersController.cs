@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HomeMarket.Models;
 using PagedList;
+using HomeMarket.Common;
 
 namespace HomeMarket.Controllers
 {
@@ -80,7 +81,7 @@ namespace HomeMarket.Controllers
             }
             return View(user);
         }
-
+        [HasCredential(RoleID = "CREATE_USER")]
         // GET: /Users/Create
         public ActionResult Create()
         {
@@ -96,6 +97,7 @@ namespace HomeMarket.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Password = Encryptor.MD5Hash(user.Password);
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -129,6 +131,7 @@ namespace HomeMarket.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
+                user.Password = Encryptor.MD5Hash(user.Password);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -19,7 +19,8 @@ namespace HomeMarket.Controllers.APIController
         // GET: api/BangGiaSieuThiAPI
         public IQueryable<BangGiaSieuThi> GetBangGiaSieuThi()
         {
-            return db.BangGiaSieuThi;
+            var banggia = db.BangGiaSieuThi.Where(x => x.Status == true);
+            return banggia;
         }
 
         // GET: api/BangGiaSieuThiAPI/5
@@ -27,6 +28,7 @@ namespace HomeMarket.Controllers.APIController
         public IHttpActionResult GetBangGiaSieuThi(int id)
         {
             BangGiaSieuThi bangGiaSieuThi = db.BangGiaSieuThi.Find(id);
+
             if (bangGiaSieuThi == null)
             {
                 return NotFound();
@@ -36,39 +38,39 @@ namespace HomeMarket.Controllers.APIController
         }
 
         // PUT: api/BangGiaSieuThiAPI/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutBangGiaSieuThi(int id, BangGiaSieuThi bangGiaSieuThi)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutBangGiaSieuThi(int id, BangGiaSieuThi bangGiaSieuThi)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != bangGiaSieuThi.Id)
-            {
-                return BadRequest();
-            }
+        //    if (id != bangGiaSieuThi.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(bangGiaSieuThi).State = EntityState.Modified;
+        //    db.Entry(bangGiaSieuThi).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BangGiaSieuThiExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!BangGiaSieuThiExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/BangGiaSieuThiAPI
         //[ResponseType(typeof(BangGiaSieuThi))]
@@ -101,14 +103,14 @@ namespace HomeMarket.Controllers.APIController
         //    return Ok(bangGiaSieuThi);
         //}
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         private bool BangGiaSieuThiExists(int id)
         {

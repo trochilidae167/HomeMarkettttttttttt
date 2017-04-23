@@ -11,50 +11,65 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-				<h4 class="text-danger">Bạn thực sự muốn xóa ?</h4>
-				 <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MaThucPham)
-        </dt>
+                    <h4 class="text-danger">Bạn thực sự muốn xóa ?</h4>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MaThucPham)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MaThucPham)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.MaThucPham)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenThucPham)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TenThucPham)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenThucPham)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.TenThucPham)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiThucPham)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.LoaiThucPham)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiThucPham)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.LoaiThucPham)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaThucPham)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.GiaThucPham)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GiaThucPham)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.GiaThucPham)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </dt>
 
-    </dl>
+                        <dd>
+                            @if (Model.Status == true)
+            {
+                                <input type="checkbox" disabled="disabled" checked="checked" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" disabled="disabled" />
+                            }
+                        </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                    </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-primary" />
-            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger"})
-        </div>
-    }
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Xóa" class="btn btn-primary" />
+                            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger" })
+                        </div>
+                    }
 
 
 
@@ -62,6 +77,4 @@
             </div>
         </div>
     </div>
- </div>
-
-
+</div>

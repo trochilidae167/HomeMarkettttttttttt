@@ -48,7 +48,7 @@
         <th>@Html.ActionLink("Loại thực phẩm", "Index", new { sortOrder = ViewBag.Loai, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
         <th>@Html.ActionLink("Giá thực phẩm", "Index", new { sortOrder = ViewBag.Gia, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
-		
+		<th>Trạng thái</th>
         
     </tr>
 
@@ -69,6 +69,19 @@
         <td>@Html.DisplayFor(modelItem => item.TenThucPham)</td>
         <td>@Html.DisplayFor(modelItem => item.LoaiThucPham)</td>
         <td>@Html.DisplayFor(modelItem => item.GiaThucPham)</td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Status)*@
+        @if (item.Status == true)
+        {
+            <input type="checkbox" disabled="disabled" checked="checked" />
+        }
+        else
+        {
+            <input type="checkbox" disabled="disabled" />
+        }
+    </td>
+
+
 
     </tr>
 }
