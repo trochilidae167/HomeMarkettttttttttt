@@ -142,6 +142,9 @@
     <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\APIController\BangGiaSieuThiAPIController.cs" />
+    <Compile Include="Controllers\APIController\DonHangAPIController.cs" />
+    <Compile Include="Controllers\APIController\DonHangChiTietAPIController.cs" />
+    <Compile Include="Controllers\APIController\LoginAPIController.cs" />
     <Compile Include="Controllers\BangGiaChoController.cs" />
     <Compile Include="Controllers\BangGiaSieuThiController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
@@ -194,6 +197,10 @@
     <Compile Include="Migrations\201704220427530_update_banggia.cs" />
     <Compile Include="Migrations\201704220427530_update_banggia.Designer.cs">
       <DependentUpon>201704220427530_update_banggia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705130852047_update_database_RegistrationId.cs" />
+    <Compile Include="Migrations\201705130852047_update_database_RegistrationId.Designer.cs">
+      <DependentUpon>201705130852047_update_database_RegistrationId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
@@ -303,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704220427530_update_banggia.resx">
       <DependentUpon>201704220427530_update_banggia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705130852047_update_database_RegistrationId.resx">
+      <DependentUpon>201705130852047_update_database_RegistrationId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

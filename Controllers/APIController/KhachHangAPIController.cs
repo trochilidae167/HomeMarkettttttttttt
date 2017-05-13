@@ -10,6 +10,7 @@ using System.Web.Services;
 using System.Web.Http;
 using System.Web.Http.Description;
 using HomeMarket.Models;
+using HomeMarket.Common;
 
 namespace HomeMarket.Controllers
 {
@@ -18,10 +19,14 @@ namespace HomeMarket.Controllers
         private HomeMarketDbContext db = new HomeMarketDbContext();
 
         // GET: api/KhachHangAPI
-        public IQueryable<KhachHang> GetKhachHang()
+        public KhachHangAPIController()
         {
-            return db.KhachHang;
+            db.Configuration.ProxyCreationEnabled = false;
         }
+        //public IQueryable<KhachHang> GetKhachHang()
+        //{
+        //    return db.KhachHang;
+        //}
 
         // GET: api/KhachHangAPI/5
         [ResponseType(typeof(KhachHang))]
@@ -75,16 +80,34 @@ namespace HomeMarket.Controllers
         [ResponseType(typeof(KhachHang))]
         public IHttpActionResult PostKhachHang(KhachHang khachHang)
         {
+            var khachhang = db.KhachHang;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            
-            db.KhachHang.Add(khachHang);
-            db.SaveChanges();
-
-
-            return CreatedAtRoute("DefaultApi", new { id = khachHang.Id }, khachHang);
+            int result = 1;
+            if (khachhang.Count(x => x.UserName == khachHang.UserName) > 0)
+                result = -1;
+            else if (khachhang.Count(x => x.Email == khachHang.Email) > 0)
+                result = -2;
+                if (result == 1)
+            {
+                khachHang.Ma = DateTime.Now.ToString("ddmmyyyy")+khachHang.Id;
+                khachHang.Password = Encryptor.MD5Hash(khachHang.Password);
+                khachHang.NgayDangKy = DateTime.Now;
+                db.KhachHang.Add(khachHang);
+                db.SaveChanges();
+                return Json("1"); 
+            }
+            if (result == -1)
+            {
+                return Json("-1");
+            }
+            if (result == -2)
+            {
+                return Json("-2");
+            }
+            return Ok();
         }
 
         // DELETE: api/KhachHangAPI/5

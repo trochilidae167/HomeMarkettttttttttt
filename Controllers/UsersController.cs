@@ -97,6 +97,7 @@ namespace HomeMarket.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.NgayDangKy = DateTime.Now;
                 user.Password = Encryptor.MD5Hash(user.Password);
                 db.Users.Add(user);
                 db.SaveChanges();
@@ -132,6 +133,7 @@ namespace HomeMarket.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 user.Password = Encryptor.MD5Hash(user.Password);
+                user.NgayDangKy = DateTime.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

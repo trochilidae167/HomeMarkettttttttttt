@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HomeMarket.Models;
 using PagedList;
+using HomeMarket.Common;
 
 namespace HomeMarket.Controllers
 {
@@ -92,10 +93,12 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Ma,Ten,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include="Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
+                khachHang.Password = Encryptor.MD5Hash(khachHang.Password);
+                khachHang.NgayDangKy = DateTime.Now;
                 db.KhachHang.Add(khachHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -124,11 +127,14 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Ma,Ten,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include= "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(khachHang).State = EntityState.Modified;
+                khachHang.Password = Encryptor.MD5Hash(khachHang.Password);
+                khachHang.NgayDangKy = DateTime.Now;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
