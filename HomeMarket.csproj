@@ -198,9 +198,9 @@
     <Compile Include="Migrations\201704220427530_update_banggia.Designer.cs">
       <DependentUpon>201704220427530_update_banggia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705130852047_update_database_RegistrationId.cs" />
-    <Compile Include="Migrations\201705130852047_update_database_RegistrationId.Designer.cs">
-      <DependentUpon>201705130852047_update_database_RegistrationId.cs</DependentUpon>
+    <Compile Include="Migrations\201705131142166_update_databas_RegistrationId.cs" />
+    <Compile Include="Migrations\201705131142166_update_databas_RegistrationId.Designer.cs">
+      <DependentUpon>201705131142166_update_databas_RegistrationId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
@@ -311,8 +311,8 @@
     <EmbeddedResource Include="Migrations\201704220427530_update_banggia.resx">
       <DependentUpon>201704220427530_update_banggia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705130852047_update_database_RegistrationId.resx">
-      <DependentUpon>201705130852047_update_database_RegistrationId.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705131142166_update_databas_RegistrationId.resx">
+      <DependentUpon>201705131142166_update_databas_RegistrationId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

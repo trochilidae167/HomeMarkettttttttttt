@@ -7,13 +7,13 @@ namespace HomeMarket.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class update_database_RegistrationId : IMigrationMetadata
+    public sealed partial class update_databas_RegistrationId : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update_database_RegistrationId));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update_databas_RegistrationId));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705130852047_update_database_RegistrationId"; }
+            get { return "201705131142166_update_databas_RegistrationId"; }
         }
         
         string IMigrationMetadata.Source

@@ -35,6 +35,10 @@
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
+        [Column(TypeName = "ntext")]
+        [Display(Name = "RegistrationId")]
+        public string RegistrationId { get; set; }
+
         [StringLength(1024)]
         [Display(Name = "Avatar")]
         public string HinhAnh { get; set; }
