@@ -144,12 +144,12 @@
     <Compile Include="Controllers\APIController\BangGiaSieuThiAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangChiTietAPIController.cs" />
+    <Compile Include="Controllers\APIController\KhachHangAPIController.cs" />
     <Compile Include="Controllers\APIController\LoginAPIController.cs" />
     <Compile Include="Controllers\BangGiaChoController.cs" />
     <Compile Include="Controllers\BangGiaSieuThiController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\APIController\KhachHangAPIController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NguoiDiChoController.cs" />

@@ -37,7 +37,6 @@ namespace HomeMarket.Controllers
             {
                 return NotFound();
             }
-
             return Ok(khachHang);
         }
 
@@ -90,14 +89,14 @@ namespace HomeMarket.Controllers
                 result = -1;
             else if (khachhang.Count(x => x.Email == khachHang.Email) > 0)
                 result = -2;
-                if (result == 1)
+            if (result == 1)
             {
-                khachHang.Ma = DateTime.Now.ToString("ddmmyyyy")+khachHang.Id;
+                khachHang.Ma = DateTime.Now.ToString("ddmmyyyy") + khachHang.Id;
                 khachHang.Password = Encryptor.MD5Hash(khachHang.Password);
                 khachHang.NgayDangKy = DateTime.Now;
                 db.KhachHang.Add(khachHang);
                 db.SaveChanges();
-                return Json("1"); 
+                return Json("1");
             }
             if (result == -1)
             {

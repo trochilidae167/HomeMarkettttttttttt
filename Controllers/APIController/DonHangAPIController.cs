@@ -82,14 +82,32 @@ namespace HomeMarket.Controllers.APIController
             {
                 return BadRequest(ModelState);
             }
+            var khachhang = db.KhachHang.SingleOrDefault(x => x.Id == donHang.KhachHangId);
             donHang.DonHangChiTiets.Count();
-            donHang.Ma = DateTime.Now.ToString("ddmmyyyy")+donHang.Id;
+            donHang.Ma = donHang.Id + "-" + DateTime.Now.ToString("ddmmyyyy");
             donHang.ThoiGianDat = DateTime.Now;
             donHang.DaNhan = false;
-            db.DonHang.Add(donHang);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = donHang.Id }, donHang);
+            //db.DonHang.Add(donHang);
+            //db.SaveChanges();
+            string donhangchitiet = "";
+            List<int> list = new List<int>();
+            var m = db.DonHangChiTiet.Where(x => x.DonHangId == 1003);
+            long n = m.Count();
+            foreach (DonHangChiTiet x in m)
+            {
+                list.Add(x.Id);
+            }
+            for(int i=0;i<list.Count();i++)
+            {
+                donhangchitiet = donhangchitiet + "Tên thực phẩm:" + db.DonHangChiTiet.Find(list[i]).TenThucPham+
+                                  "<br>Số lượng:"+ db.DonHangChiTiet.Find(list[i]).SoLuong+"/kg"+
+                                  "<br>Giá tiền:"+ db.DonHangChiTiet.Find(list[i]).Gia+"/VND" + "<br>";
+            }
+           
+            return Json("Bạn vừa đặt thành công đơn hàng:<br>" +
+                "Họ tên: " + khachhang.Ten + 
+                "<br>Chi tiết sản phẩm:<br>"+donhangchitiet);
+            //return CreatedAtRoute("DefaultApi", new { id = donHang.Id }, donHang);
         }
 
         // DELETE: api/DonHangAPI/5
