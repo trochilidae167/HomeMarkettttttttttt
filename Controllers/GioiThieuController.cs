@@ -113,7 +113,7 @@ namespace HomeMarket.Controllers
                         string noidung = gioiThieu.NoiDung;
                         WebRequest tRequest;
                         //thiết lập GCM send
-                        tRequest = WebRequest.Create("https://android.googleapis.com/gcm/send");
+                        tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
                         tRequest.Method = "POST";
                         tRequest.UseDefaultCredentials = true; tRequest.PreAuthenticate = true;
 
@@ -122,9 +122,9 @@ namespace HomeMarket.Controllers
                         //định dạng JSON
                         tRequest.ContentType = "application/json";
                         //tRequest.ContentType = " application/x-www-form-urlencoded;charset=UTF-8";
-                        tRequest.Headers.Add(string.Format("Authorization: key={0}", applicationID));
+                        tRequest.Headers.Add(string.Format("Authorization: key={0}", "AIzaSyBhJXTDhViR3z3SBflpMW-2qKmLAEJSbRU"));
+                        tRequest.Headers.Add(string.Format("Sender: id={0}", "864967612690"));
 
-                        tRequest.Headers.Add(string.Format("Sender: id={0}", SENDER_ID));
 
                         string RegArr = string.Empty;
 
@@ -151,7 +151,6 @@ namespace HomeMarket.Controllers
                         tReader.Close();
                         dataStream.Close();
                         tResponse.Close();
-                        Response.Write(@"<script language='javascript'>alert('Tui đã nói bạn đừng test mà....\nduythanhcse@gmail.com')</script>");
                     }
                 }
                 catch (Exception ex)

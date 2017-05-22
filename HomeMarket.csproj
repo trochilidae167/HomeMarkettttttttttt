@@ -137,6 +137,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\CalculateDistance.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\HasCredentialAttribute.cs" />
@@ -201,6 +202,10 @@
     <Compile Include="Migrations\201705131142166_update_databas_RegistrationId.cs" />
     <Compile Include="Migrations\201705131142166_update_databas_RegistrationId.Designer.cs">
       <DependentUpon>201705131142166_update_databas_RegistrationId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705220137137_update-KhachHang.cs" />
+    <Compile Include="Migrations\201705220137137_update-KhachHang.Designer.cs">
+      <DependentUpon>201705220137137_update-KhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
@@ -313,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705131142166_update_databas_RegistrationId.resx">
       <DependentUpon>201705131142166_update_databas_RegistrationId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705220137137_update-KhachHang.resx">
+      <DependentUpon>201705220137137_update-KhachHang.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

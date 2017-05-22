@@ -55,6 +55,10 @@
         [Display(Name = "Số điện thoại")]
         public string SDT { get; set; }
 
+        [StringLength(50)]
+        [Display(Name = "Chứng minh thư")]
+        public string CMND { get; set; }
+
         [StringLength(1024)]
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
@@ -68,6 +72,16 @@
 
         [Display(Name = "Người đi chợ")]
         public bool? NguoiDiCho { get; set; }
+
+        [Display(Name = "Trạng thái")]
+        public bool? Status { get; set; }
+
+        [Display(Name = "Tọa độ X")]
+        public double X { get; set; }
+
+        [Display(Name = "Tọa độ Y")]
+        public double Y { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
