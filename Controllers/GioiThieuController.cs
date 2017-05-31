@@ -10,6 +10,7 @@ using HomeMarket.Models;
 using PagedList;
 using System.Text;
 using System.IO;
+using System.Web.Script.Serialization;
 
 namespace HomeMarket.Controllers
 {
@@ -104,131 +105,99 @@ namespace HomeMarket.Controllers
                 {
                     db.GioiThieu.Add(gioiThieu);
                     db.SaveChanges();
-                    string applicationID = "AIzaSyC6NjtiK9c5C7x88i5hP6SfPHA4LqZpsiI";
-                    string SENDER_ID = "homemarket-167";
-                    //lấy danh sách Registration Id
+                    List<int> khachhangId = db.KhachHang.Where(m => m.RegistrationId != null).Select(m => m.Id).ToList();
+                    List<int> nguoidichoId = db.KhachHang.Where(m => m.NguoiDiCho == true).Select(m => m.Id).ToList();
                     if (gioiThieu.KhachHang == true)
                     {
-                        string[] arrRegId = db.KhachHang.Where(c => c.NguoiDiCho == false).Select(c => c.RegistrationId).ToArray();
-                        string noidung = gioiThieu.NoiDung;
-                        WebRequest tRequest;
-                        //thiết lập GCM send
-                        tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
-                        tRequest.Method = "POST";
-                        tRequest.UseDefaultCredentials = true; tRequest.PreAuthenticate = true;
+                        for(int i=0;i<khachhangId.Count();i++)
+                        {
+                            Common.SendNotification.SendNotifications(gioiThieu.NoiDung, gioiThieu.Ten,khachhangId[i]);
+                        }                        
+                    }
+                    if (gioiThieu.NguoiDiCho == true)
+                    {
+                        for (int i = 0; i < nguoidichoId.Count(); i++)
+                        {
+                            Common.SendNotification.SendNotifications(gioiThieu.NoiDung, gioiThieu.Ten, nguoidichoId[i]);
+                        }
 
-                        tRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
-
-                        //định dạng JSON
-                        tRequest.ContentType = "application/json";
-                        //tRequest.ContentType = " application/x-www-form-urlencoded;charset=UTF-8";
-                        tRequest.Headers.Add(string.Format("Authorization: key={0}", "AIzaSyBhJXTDhViR3z3SBflpMW-2qKmLAEJSbRU"));
-                        tRequest.Headers.Add(string.Format("Sender: id={0}", "864967612690"));
-
-
-                        string RegArr = string.Empty;
-
-                        RegArr = string.Join("\",\"", arrRegId);
-                        string postData = "{ \"registration_ids\": [ \"" + RegArr + "\" ],\"data\": {\"message\": \"" + noidung + "\",\"collapse_key\":\"" + noidung + "\"}}";
-
-                        Console.WriteLine(postData);
-                        Byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-                        tRequest.ContentLength = byteArray.Length;
-
-                        Stream dataStream = tRequest.GetRequestStream();
-                        dataStream.Write(byteArray, 0, byteArray.Length);
-                        dataStream.Close();
-
-                        WebResponse tResponse = tRequest.GetResponse();
-
-                        dataStream = tResponse.GetResponseStream();
-
-                        StreamReader tReader = new StreamReader(dataStream);
-
-                        String sResponseFromServer = tReader.ReadToEnd();
-
-                        string ketqua = sResponseFromServer; //Lấy thông báo kết quả từ GCM server.
-                        tReader.Close();
-                        dataStream.Close();
-                        tResponse.Close();
                     }
                 }
                 catch (Exception ex)
                 {
-                    //Response.Write(ex.ToString());
-                    string msgError = ex.ToString();
-                    Response.Write(@"<script language='javascript'>alert('" + msgError + "')</script>");
+
+                    string str = ex.Message;
+
                 }
-                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
         }
 
+        // GET: /GioiThieu/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            GioiThieu gioiThieu = db.GioiThieu.Find(id);
+            if (gioiThieu == null)
+            {
+                return HttpNotFound();
+            }
             return View(gioiThieu);
-    }
-
-    // GET: /GioiThieu/Edit/5
-    public ActionResult Edit(int? id)
-    {
-        if (id == null)
-        {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-        GioiThieu gioiThieu = db.GioiThieu.Find(id);
-        if (gioiThieu == null)
-        {
-            return HttpNotFound();
-        }
-        return View(gioiThieu);
-    }
 
-    // POST: /GioiThieu/Edit/5
-    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Edit([Bind(Include = "Id,Ten,NoiDung,NgayTao,NguoiSuDung,KhachHang,NguoiDiCho")] GioiThieu gioiThieu)
-    {
-        if (ModelState.IsValid)
+        // POST: /GioiThieu/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Ten,NoiDung,NgayTao,NguoiSuDung,KhachHang,NguoiDiCho")] GioiThieu gioiThieu)
         {
-            db.Entry(gioiThieu).State = EntityState.Modified;
+            if (ModelState.IsValid)
+            {
+                db.Entry(gioiThieu).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(gioiThieu);
+        }
+
+        // GET: /GioiThieu/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            GioiThieu gioiThieu = db.GioiThieu.Find(id);
+            if (gioiThieu == null)
+            {
+                return HttpNotFound();
+            }
+            return View(gioiThieu);
+        }
+
+        // POST: /GioiThieu/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            GioiThieu gioiThieu = db.GioiThieu.Find(id);
+            db.GioiThieu.Remove(gioiThieu);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        return View(gioiThieu);
-    }
 
-    // GET: /GioiThieu/Delete/5
-    public ActionResult Delete(int? id)
-    {
-        if (id == null)
+        protected override void Dispose(bool disposing)
         {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
-        GioiThieu gioiThieu = db.GioiThieu.Find(id);
-        if (gioiThieu == null)
-        {
-            return HttpNotFound();
-        }
-        return View(gioiThieu);
     }
-
-    // POST: /GioiThieu/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public ActionResult DeleteConfirmed(int id)
-    {
-        GioiThieu gioiThieu = db.GioiThieu.Find(id);
-        db.GioiThieu.Remove(gioiThieu);
-        db.SaveChanges();
-        return RedirectToAction("Index");
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-        {
-            db.Dispose();
-        }
-        base.Dispose(disposing);
-    }
-}
 }

@@ -21,13 +21,13 @@ namespace HomeMarket.Models
         [StringLength(50)]
         public string Ma { get; set; }
 
-        public int? KhachHangId { get; set; }
+        public int KhachHangId { get; set; }
 
-        public int? NCUId { get; set; }
+        public int NCUId { get; set; }
 
-        public DateTime? ThoiGianDat { get; set; }
+        public DateTime ThoiGianDat { get; set; }
 
-        public bool? DaNhan { get; set; }
+        public bool DaNhan { get; set; }
 
         public virtual KhachHang KhachHang { get; set; }
 

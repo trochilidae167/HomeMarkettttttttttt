@@ -11,19 +11,20 @@
     {
         public int Id { get; set; }
 
+
         [StringLength(250)]
-        [Display(Name ="Tiêu đề")]
+        [Display(Name = "Tiêu đề")]
         public string Ten { get; set; }
 
         [Column(TypeName = "ntext")]
-        [Display(Name ="Nội dung")]
+        [Display(Name = "Nội dung")]
         public string NoiDung { get; set; }
 
         [Column(TypeName = "date")]
-        [Display(Name ="Ngày tạo")]
+        [Display(Name = "Ngày tạo")]
         public DateTime? NgayTao { get; set; }
 
-        [Display(Name ="Người sử dụng")]
+        [Display(Name = "Người sử dụng")]
         public bool? NguoiSuDung { get; set; }
         [Display(Name = "Khách hàng")]
         public bool? KhachHang { get; set; }

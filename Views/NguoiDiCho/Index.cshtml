@@ -8,7 +8,7 @@
 }
 
 @section header{
-    Index
+    Danh sách người đi chợ
 }  
 
 
@@ -52,6 +52,8 @@
         <th>SĐT</th>
 		
         <th>Địa chỉ</th>
+
+        <th>Trạng thái</th>
 		
         <th>@Html.ActionLink("Ngày đăng ký", "Index", new { sortOrder = ViewBag.NgayDangKy, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
@@ -81,6 +83,8 @@
         <td>@Html.DisplayFor(modelItem => item.SDT)</td>
 
         <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+
         <td>@Html.DisplayFor(modelItem => item.NgayDangKy)</td>
 
     </tr>

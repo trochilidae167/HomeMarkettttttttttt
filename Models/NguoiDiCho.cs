@@ -9,10 +9,10 @@
     [Table("NguoiDiCho")]
     public partial class NguoiDiCho
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
-
-        [StringLength(50)]
-        [Display(Name ="Mã")]
+ [StringLength(50)]
+        [Display(Name = "Mã")]
         public string Ma { get; set; }
 
         [StringLength(250)]
@@ -57,10 +57,19 @@
         public double? DanhGia { get; set; }
 
         [Display(Name = "Tài khoản")]
-        public double? TaiKhoan { get; set; }
+        public double TaiKhoan { get; set; }
 
         [Column(TypeName = "date")]
         [Display(Name = "Ngày đăng ký")]
-        public DateTime? NgayDangKy { get; set; }
+        public DateTime NgayDangKy { get; set; }
+
+        [Display(Name = "Trạng thái")]
+        public bool Status { get; set; }
+
+        public double X { get; set; }
+
+        public double Y { get; set; }
+
+        public bool Online { get; set; }
     }
 }

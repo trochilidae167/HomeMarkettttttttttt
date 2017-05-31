@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -13,7 +12,7 @@
         public int Id { get; set; }
 
         [StringLength(50)]
-        [Display(Name ="Mã thực phẩm")]
+        [Display(Name = "Mã thực phẩm")]
         public string MaThucPham { get; set; }
 
         [StringLength(250)]
@@ -24,9 +23,9 @@
         [Display(Name = "Loại thực phẩm")]
         public string LoaiThucPham { get; set; }
         [Display(Name = "Giá thực phẩm")]
-        public double? GiaThucPham { get; set; }
+        public double GiaThucPham { get; set; }
 
         [Display(Name = "Trạng thái")]
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }

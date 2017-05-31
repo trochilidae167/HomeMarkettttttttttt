@@ -9,22 +9,22 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using HomeMarket.Models;
+using HomeMarket.Common;
 
 namespace HomeMarket.Controllers.APIController
 {
     public class DonHangAPIController : ApiController
     {
         private HomeMarketDbContext db = new HomeMarketDbContext();
-
         //public DonHangAPIController()
         //{
         //    db.Configuration.ProxyCreationEnabled = false;
         //}
         // GET: api/DonHangAPI
-        public IQueryable<DonHang> GetDonHang()
-        {
-            return db.DonHang;
-        }
+        //public IQueryable<DonHang> GetDonHang()
+        //{
+        //    return db.DonHang;
+        //}
 
         // GET: api/DonHangAPI/5
         [ResponseType(typeof(DonHang))]
@@ -37,6 +37,7 @@ namespace HomeMarket.Controllers.APIController
             }
 
             return Ok(donHang);
+          
         }
 
         // PUT: api/DonHangAPI/5
@@ -87,11 +88,11 @@ namespace HomeMarket.Controllers.APIController
             donHang.Ma = donHang.Id + "-" + DateTime.Now.ToString("ddmmyyyy");
             donHang.ThoiGianDat = DateTime.Now;
             donHang.DaNhan = false;
-            //db.DonHang.Add(donHang);
-            //db.SaveChanges();
+            db.DonHang.Add(donHang);
+            db.SaveChanges();
             string donhangchitiet = "";
             List<int> list = new List<int>();
-            var m = db.DonHangChiTiet.Where(x => x.DonHangId == 1003);
+            var m = db.DonHangChiTiet.Where(x => x.DonHangId == donHang.Id);
             long n = m.Count();
             foreach (DonHangChiTiet x in m)
             {
@@ -103,10 +104,14 @@ namespace HomeMarket.Controllers.APIController
                                   "<br>Số lượng:"+ db.DonHangChiTiet.Find(list[i]).SoLuong+"/kg"+
                                   "<br>Giá tiền:"+ db.DonHangChiTiet.Find(list[i]).Gia+"/VND" + "<br>";
             }
-           
+            string noidung = "";
+            noidung = "Đơn hàng "+ donHang.Id +" từ khách hàng có mã là: " + khachhang.Id + "<br>Với đơn hàng như sau:<br>" + donhangchitiet +
+                        "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
+            Common.FindShipper.LookingForShipper(10.8025472, 106.6625141,noidung,"YeuCauNhanDonHang");
             return Json("Bạn vừa đặt thành công đơn hàng:<br>" +
                 "Họ tên: " + khachhang.Ten + 
                 "<br>Chi tiết sản phẩm:<br>"+donhangchitiet);
+            
             //return CreatedAtRoute("DefaultApi", new { id = donHang.Id }, donHang);
         }
 

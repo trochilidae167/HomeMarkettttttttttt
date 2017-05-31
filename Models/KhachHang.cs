@@ -19,7 +19,7 @@
         public int Id { get; set; }
 
         [StringLength(50)]
-        [Display(Name ="Mã khách hàng")]
+        [Display(Name = "Mã khách hàng")]
         public string Ma { get; set; }
 
         [StringLength(250)]
@@ -81,7 +81,6 @@
 
         [Display(Name = "Tọa độ Y")]
         public double Y { get; set; }
-
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }

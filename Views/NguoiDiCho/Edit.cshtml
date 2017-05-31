@@ -96,30 +96,43 @@
                 @Html.ValidationMessageFor(model => model.Email)
             </div>
         </div>
-
         <div class="form-group">
+            @Html.LabelFor(model => model.X, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.X)
+                @Html.ValidationMessageFor(model => model.X)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Y, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Y)
+                @Html.ValidationMessageFor(model => model.Y)
+            </div>
+        </div>
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DanhGia, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DanhGia)
                 @Html.ValidationMessageFor(model => model.DanhGia)
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.TaiKhoan, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TaiKhoan)
                 @Html.ValidationMessageFor(model => model.TaiKhoan)
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.NgayDangKy, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NgayDangKy)
                 @Html.ValidationMessageFor(model => model.NgayDangKy)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

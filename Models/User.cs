@@ -1,4 +1,4 @@
-﻿namespace HomeMarket.Models
+namespace HomeMarket.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,53 +9,43 @@
     public partial class User
     {
         public int Id { get; set; }
+
         [StringLength(50)]
-        [Display(Name = "Mã")]
         public string Ma { get; set; }
 
         [StringLength(250)]
-        [Display(Name = "Họ và tên")]
         public string Ten { get; set; }
 
-        [StringLength(50)]
-        [Display(Name = "Tài khoản")]
-        public string UserName { get; set; }
-
-        [StringLength(32)]
-        [Display(Name = "Mật khẩu")]
-        public string Password { get; set; }
-
         [StringLength(1024)]
-        [Display(Name = "Hình ảnh")]
         public string HinhAnh { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Ngày sinh")]
         public string NgaySinh { get; set; }
 
         [StringLength(250)]
-        [Display(Name = "Quốc tịch")]
         public string QuocTich { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "SĐT")]
         public string SDT { get; set; }
 
         [StringLength(1024)]
-        [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
 
         [StringLength(1024)]
-        [Display(Name = "Email")]
         public string Email { get; set; }
-        [StringLength(20)]
-        [Display(Name = "Mã nhóm")]
-        public string GroupID { set; get; }
-        [Display(Name = "Trạng thái")]
-        public bool Status { get; set; }
 
         [Column(TypeName = "date")]
-        [Display(Name = "Ngày đăng ký")]
         public DateTime? NgayDangKy { get; set; }
+
+        [StringLength(50)]
+        public string UserName { get; set; }
+
+        [StringLength(32)]
+        public string Password { get; set; }
+
+        [StringLength(20)]
+        public string GroupID { get; set; }
+
+        public bool Status { get; set; }
     }
 }

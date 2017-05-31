@@ -5,61 +5,30 @@ using System.Web;
 
 namespace HomeMarket.Common
 {
-    public class CalculateDistance
+    public static class CalculateDistance
     {
-        /// <summary>
-        /// The units of measure when calculating distance between 2 coordinates
-        /// </summary>
-        public enum MeasureUnits { Miles, Kilometers };
-        /// <summary>
-        /// Gets or sets the latitude of the coordinate.
-        /// </summary>
-        public double Latitude { get; set; }
-
-        /// <summary>
-        /// Gets or sets the longitude of the coordinate.
-        /// </summary>
-        public double Longitude { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Coordinate"/> class.
-        /// </summary>
-        /// <param name="latitude">The latitude.</param>
-        /// <param name="longitude">The longitude.</param>
-        public CalculateDistance(double latitude, double longitude)
+       
+        public static double DistanceFrom(double p1latitude, double p1longitude,
+                                          double p2latitude, double p2longitude)
         {
-            Latitude = latitude;
-            Longitude = longitude;
+            //double p1latitude = 10.7881681;
+            //double p1longitude = 106.6238654;
+            //double p2latitude = 10.768879;
+            //double p2longitude = 106.6351817;
+            var R = 6378137; // Earth’s mean radius in meter
+            var dLat = Deg2Rad(p1latitude - p2latitude);
+            var dLong = Deg2Rad(p1longitude - p2longitude);
+            var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+              Math.Cos(Deg2Rad(p1latitude)) * Math.Cos(Deg2Rad(p2latitude)) *
+              Math.Sin(dLong / 2) * Math.Sin(dLong / 2);
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            var d = R * c;
+            return d; // returns the distance in meter
         }
 
-        /// <summary>
-        /// Calculates the approximate birds-flight distance between this coordinate and the coordinate in the parameter
-        /// </summary>
-        /// <param name="coordinate">The coordinate.</param>
-        /// <param name="units">The units to measure in</param>
-        /// <returns></returns>
-        public double DistanceFrom(CalculateDistance coordinate, MeasureUnits units)
-        {
-            double earthRadius = (units == MeasureUnits.Miles) ? 3960 : 6371;
-            double dLat = Deg2Rad(coordinate.Latitude - Latitude);
-            double dLon = Deg2Rad(coordinate.Longitude - Longitude);
-            double a = Math.Sin(dLat / 2) *
-                       Math.Sin(dLat / 2) +
-                       Math.Cos(Deg2Rad(Latitude)) *
-                       Math.Cos(Deg2Rad(coordinate.Latitude)) *
-                       Math.Sin(dLon / 2) *
-                       Math.Sin(dLon / 2);
-            double c = 2 * Math.Asin(Math.Min(1, Math.Sqrt(a)));
-            double d = earthRadius * c;
-            return d;
-        }
 
-        /// <summary>
-        /// Converts from Degrees to Radians
-        /// </summary>
-        /// <param name="deg">The degrees</param>
-        /// <returns>The radians</returns>
-        private double Deg2Rad(double deg)
+        
+        private static double Deg2Rad(double deg)
         {
             return (deg * Math.PI / 180.0);
         }

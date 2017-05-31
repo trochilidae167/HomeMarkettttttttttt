@@ -140,13 +140,18 @@
     <Compile Include="Common\CalculateDistance.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\FindShipper.cs" />
     <Compile Include="Common\HasCredentialAttribute.cs" />
+    <Compile Include="Common\SendNotification.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\APIController\BangGiaSieuThiAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangChiTietAPIController.cs" />
     <Compile Include="Controllers\APIController\KhachHangAPIController.cs" />
     <Compile Include="Controllers\APIController\LoginAPIController.cs" />
+    <Compile Include="Controllers\APIController\NguoiDiChoAPIController.cs" />
+    <Compile Include="Controllers\APIController\NhanDonHangAPIController.cs" />
+    <Compile Include="Controllers\APIController\PhanHoiAPIController.cs" />
     <Compile Include="Controllers\BangGiaChoController.cs" />
     <Compile Include="Controllers\BangGiaSieuThiController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
@@ -154,6 +159,7 @@
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NguoiDiChoController.cs" />
+    <Compile Include="Controllers\PhanHoiController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,6 +212,42 @@
     <Compile Include="Migrations\201705220137137_update-KhachHang.cs" />
     <Compile Include="Migrations\201705220137137_update-KhachHang.Designer.cs">
       <DependentUpon>201705220137137_update-KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705220715219_edit_nguoidicho.cs" />
+    <Compile Include="Migrations\201705220715219_edit_nguoidicho.Designer.cs">
+      <DependentUpon>201705220715219_edit_nguoidicho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705220852451_database123.cs" />
+    <Compile Include="Migrations\201705220852451_database123.Designer.cs">
+      <DependentUpon>201705220852451_database123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705221457115_edit_databaseNguoiDiCho.cs" />
+    <Compile Include="Migrations\201705221457115_edit_databaseNguoiDiCho.Designer.cs">
+      <DependentUpon>201705221457115_edit_databaseNguoiDiCho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705290838369_update-phanhoi.cs" />
+    <Compile Include="Migrations\201705290838369_update-phanhoi.Designer.cs">
+      <DependentUpon>201705290838369_update-phanhoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705290845540_update-nhandonhang.cs" />
+    <Compile Include="Migrations\201705290845540_update-nhandonhang.Designer.cs">
+      <DependentUpon>201705290845540_update-nhandonhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705290848505_update-nhandonhang1.cs" />
+    <Compile Include="Migrations\201705290848505_update-nhandonhang1.Designer.cs">
+      <DependentUpon>201705290848505_update-nhandonhang1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705290926168_update-donhang2.cs" />
+    <Compile Include="Migrations\201705290926168_update-donhang2.Designer.cs">
+      <DependentUpon>201705290926168_update-donhang2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705290932231_update-nguoidicho2.cs" />
+    <Compile Include="Migrations\201705290932231_update-nguoidicho2.Designer.cs">
+      <DependentUpon>201705290932231_update-nguoidicho2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705310231508_update_bangia.cs" />
+    <Compile Include="Migrations\201705310231508_update_bangia.Designer.cs">
+      <DependentUpon>201705310231508_update_bangia.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
@@ -270,6 +312,11 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\401.cshtml" />
+    <Content Include="Views\PhanHoi\Create.cshtml" />
+    <Content Include="Views\PhanHoi\Delete.cshtml" />
+    <Content Include="Views\PhanHoi\Details.cshtml" />
+    <Content Include="Views\PhanHoi\Edit.cshtml" />
+    <Content Include="Views\PhanHoi\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -284,6 +331,7 @@
     <Folder Include="Assets\less\" />
     <Folder Include="Assets\pages\" />
     <Folder Include="Assets\vendor\" />
+    <Folder Include="obj\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201703240805321_first-add.resx">
@@ -321,6 +369,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705220137137_update-KhachHang.resx">
       <DependentUpon>201705220137137_update-KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705220715219_edit_nguoidicho.resx">
+      <DependentUpon>201705220715219_edit_nguoidicho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705220852451_database123.resx">
+      <DependentUpon>201705220852451_database123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705221457115_edit_databaseNguoiDiCho.resx">
+      <DependentUpon>201705221457115_edit_databaseNguoiDiCho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705290838369_update-phanhoi.resx">
+      <DependentUpon>201705290838369_update-phanhoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705290845540_update-nhandonhang.resx">
+      <DependentUpon>201705290845540_update-nhandonhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705290848505_update-nhandonhang1.resx">
+      <DependentUpon>201705290848505_update-nhandonhang1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705290926168_update-donhang2.resx">
+      <DependentUpon>201705290926168_update-donhang2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705290932231_update-nguoidicho2.resx">
+      <DependentUpon>201705290932231_update-nguoidicho2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310231508_update_bangia.resx">
+      <DependentUpon>201705310231508_update_bangia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

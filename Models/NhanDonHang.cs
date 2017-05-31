@@ -18,7 +18,8 @@ namespace HomeMarket.Models
         [StringLength(50)]
         public string MaNguoiDiCho { get; set; }
 
-        [StringLength(50)]
-        public string ThoiGianNhan { get; set; }
+        public DateTime ThoiGianNhan { get; set; }
+
+        public bool Status { get; set; }
     }
 }

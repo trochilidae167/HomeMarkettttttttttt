@@ -1,4 +1,5 @@
 ﻿@model HomeMarket.Models.KhachHang
+@using HomeMarket.Common
 
 @{
     ViewBag.Title = "Edit";
@@ -95,14 +96,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Email)
                 @Html.ValidationMessageFor(model => model.Email)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayDangKy, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayDangKy)
-                @Html.ValidationMessageFor(model => model.NgayDangKy)
             </div>
         </div>
 

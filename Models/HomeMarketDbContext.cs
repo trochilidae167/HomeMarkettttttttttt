@@ -8,7 +8,7 @@ namespace HomeMarket.Models
     public partial class HomeMarketDbContext : DbContext
     {
         public HomeMarketDbContext()
-            : base("name=HomeMarketDbContext")
+            : base("name=HomeMaketDbContext")
         {
         }
 
