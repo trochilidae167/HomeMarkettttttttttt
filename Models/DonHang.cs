@@ -29,6 +29,10 @@ namespace HomeMarket.Models
 
         public bool DaNhan { get; set; }
 
+        public double X { get; set; }
+
+        public double Y { get; set; }
+
         public virtual KhachHang KhachHang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

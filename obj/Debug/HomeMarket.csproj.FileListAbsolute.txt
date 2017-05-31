@@ -63,7 +63,6 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.update_d
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updateKhachHang.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.edit_nguoidicho.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.database123.resources
-D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.csprojResolveAssemblyReference.cache
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.edit_databaseNguoiDiCho.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatephanhoi.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatenhandonhang.resources
@@ -71,3 +70,6 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatenh
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatedonhang2.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatenguoidicho2.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.update_bangia.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatedatabase315.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatekhachhang315.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatenguoidichoOnline315.resources

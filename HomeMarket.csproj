@@ -150,6 +150,7 @@
     <Compile Include="Controllers\APIController\KhachHangAPIController.cs" />
     <Compile Include="Controllers\APIController\LoginAPIController.cs" />
     <Compile Include="Controllers\APIController\NguoiDiChoAPIController.cs" />
+    <Compile Include="Controllers\APIController\NguoiDiChoOnlineAPIController.cs" />
     <Compile Include="Controllers\APIController\NhanDonHangAPIController.cs" />
     <Compile Include="Controllers\APIController\PhanHoiAPIController.cs" />
     <Compile Include="Controllers\BangGiaChoController.cs" />
@@ -249,9 +250,22 @@
     <Compile Include="Migrations\201705310231508_update_bangia.Designer.cs">
       <DependentUpon>201705310231508_update_bangia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705311030206_update-database31-5.cs" />
+    <Compile Include="Migrations\201705311030206_update-database31-5.Designer.cs">
+      <DependentUpon>201705311030206_update-database31-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705311059156_update-khachhang31-5.cs" />
+    <Compile Include="Migrations\201705311059156_update-khachhang31-5.Designer.cs">
+      <DependentUpon>201705311059156_update-khachhang31-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705311127106_update-nguoidichoOnline-31-5.cs" />
+    <Compile Include="Migrations\201705311127106_update-nguoidichoOnline-31-5.Designer.cs">
+      <DependentUpon>201705311127106_update-nguoidichoOnline-31-5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
     <Compile Include="Models\BangGiaSieuThi.cs" />
+    <Compile Include="Models\NguoiDiChoOnline.cs" />
     <Compile Include="Models\Credential.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\DonHang.cs" />
@@ -331,6 +345,7 @@
     <Folder Include="Assets\less\" />
     <Folder Include="Assets\pages\" />
     <Folder Include="Assets\vendor\" />
+    <Folder Include="Migrations\201705311029432_update-database31\" />
     <Folder Include="obj\" />
   </ItemGroup>
   <ItemGroup>
@@ -396,6 +411,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705310231508_update_bangia.resx">
       <DependentUpon>201705310231508_update_bangia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311030206_update-database31-5.resx">
+      <DependentUpon>201705311030206_update-database31-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311059156_update-khachhang31-5.resx">
+      <DependentUpon>201705311059156_update-khachhang31-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311127106_update-nguoidichoOnline-31-5.resx">
+      <DependentUpon>201705311127106_update-nguoidichoOnline-31-5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

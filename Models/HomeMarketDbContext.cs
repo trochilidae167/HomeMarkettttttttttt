@@ -23,6 +23,7 @@ namespace HomeMarket.Models
         public virtual DbSet<KhachHang> KhachHang { get; set; }
         public virtual DbSet<LienHe> LienHe { get; set; }
         public virtual DbSet<NguoiDiCho> NguoiDiCho { get; set; }
+        public virtual DbSet<NguoiDiChoOnline> NguoiDiChoOnline { get; set; }
         public virtual DbSet<NhanDonHang> NhanDonHang { get; set; }
         public virtual DbSet<PhanHoi> PhanHoi { get; set; }
         public virtual DbSet<Role> Role { get; set; }

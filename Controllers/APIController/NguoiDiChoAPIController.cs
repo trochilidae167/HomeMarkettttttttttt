@@ -74,6 +74,7 @@ namespace HomeMarket.Controllers.APIController
         [ResponseType(typeof(NguoiDiCho))]
         public IHttpActionResult PostNguoiDiCho(NguoiDiCho nguoiDiCho)
         {
+
             var khachhang = db.KhachHang.SingleOrDefault(x=>x.Id == nguoiDiCho.Id);
             khachhang.NguoiDiCho = false;
             if (!ModelState.IsValid)
@@ -82,7 +83,13 @@ namespace HomeMarket.Controllers.APIController
             }
             nguoiDiCho.Status = false;
             nguoiDiCho.NgayDangKy = DateTime.Now;
+            NguoiDiChoOnline nguoidichoOnline = new NguoiDiChoOnline();
+            nguoidichoOnline.Id = nguoiDiCho.Id;
+            nguoidichoOnline.Online = false;
+            nguoidichoOnline.X = 0;
+            nguoidichoOnline.Y = 0;
             db.NguoiDiCho.Add(nguoiDiCho);
+            db.NguoiDiChoOnline.Add(nguoidichoOnline);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = nguoiDiCho.Id }, nguoiDiCho);

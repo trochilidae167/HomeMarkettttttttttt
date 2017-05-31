@@ -107,7 +107,7 @@ namespace HomeMarket.Controllers.APIController
             string noidung = "";
             noidung = "Đơn hàng "+ donHang.Id +" từ khách hàng có mã là: " + khachhang.Id + "<br>Với đơn hàng như sau:<br>" + donhangchitiet +
                         "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
-            Common.FindShipper.LookingForShipper(10.8025472, 106.6625141,noidung,"YeuCauNhanDonHang");
+            Common.FindShipper.LookingForShipper(donHang.X, donHang.Y,noidung,"YeuCauNhanDonHang",donHang.Id);
             return Json("Bạn vừa đặt thành công đơn hàng:<br>" +
                 "Họ tên: " + khachhang.Ten + 
                 "<br>Chi tiết sản phẩm:<br>"+donhangchitiet);

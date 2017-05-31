@@ -76,12 +76,6 @@
         [Display(Name = "Trạng thái")]
         public bool? Status { get; set; }
 
-        [Display(Name = "Tọa độ X")]
-        public double X { get; set; }
-
-        [Display(Name = "Tọa độ Y")]
-        public double Y { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
 

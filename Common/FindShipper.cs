@@ -9,9 +9,9 @@ namespace HomeMarket.Common
     public class FindShipper
     {
         private static HomeMarketDbContext db = new HomeMarketDbContext();
-        public static string LookingForShipper(double x, double y,string noidung,string tieude)
+        public static string LookingForShipper(double x, double y,string noidung,string tieude,int donhangId)
         {
-            List<int> arr = db.NguoiDiCho.Where(m => m.Status == true).Select(m => m.Id).ToList();
+            List<int> arr = db.NguoiDiChoOnline.Where(m => m.Online == true && m.Refuse != donhangId).Select(m => m.Id).ToList();
             List<double> list = new List<double>();
             double d = 0;
             double result = 0;
@@ -21,7 +21,7 @@ namespace HomeMarket.Common
             for (int i = 0; i < arr.Count(); i++)
             {
                 d = arr[i];
-                var nguoidicho = db.NguoiDiCho.Single(a => a.Id == d);
+                var nguoidicho = db.NguoiDiChoOnline.Single(a => a.Id == d);
                 result = CalculateDistance.DistanceFrom(x, y, nguoidicho.X, nguoidicho.Y);
                 arr2[i, 0] = arr[i];
                 arr2[i, 1] = result;
