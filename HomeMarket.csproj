@@ -262,10 +262,21 @@
     <Compile Include="Migrations\201705311127106_update-nguoidichoOnline-31-5.Designer.cs">
       <DependentUpon>201705311127106_update-nguoidichoOnline-31-5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706010919443_edit-nguoidichoonline.cs" />
+    <Compile Include="Migrations\201706010919443_edit-nguoidichoonline.Designer.cs">
+      <DependentUpon>201706010919443_edit-nguoidichoonline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706010937522_edit-database1-6.cs" />
+    <Compile Include="Migrations\201706010937522_edit-database1-6.Designer.cs">
+      <DependentUpon>201706010937522_edit-database1-6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706010941467_add-new-nguoidichoonline.cs" />
+    <Compile Include="Migrations\201706010941467_add-new-nguoidichoonline.Designer.cs">
+      <DependentUpon>201706010941467_add-new-nguoidichoonline.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
     <Compile Include="Models\BangGiaSieuThi.cs" />
-    <Compile Include="Models\NguoiDiChoOnline.cs" />
     <Compile Include="Models\Credential.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\DonHang.cs" />
@@ -277,6 +288,7 @@
     <Compile Include="Models\LienHe.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\NguoiDiCho.cs" />
+    <Compile Include="Models\NguoiDiChoOnlines.cs" />
     <Compile Include="Models\NhanDonHang.cs" />
     <Compile Include="Models\PhanHoi.cs" />
     <Compile Include="Models\Role.cs" />
@@ -346,6 +358,7 @@
     <Folder Include="Assets\pages\" />
     <Folder Include="Assets\vendor\" />
     <Folder Include="Migrations\201705311029432_update-database31\" />
+    <Folder Include="Migrations\201706010937364_edit-database1\" />
     <Folder Include="obj\" />
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +433,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705311127106_update-nguoidichoOnline-31-5.resx">
       <DependentUpon>201705311127106_update-nguoidichoOnline-31-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706010919443_edit-nguoidichoonline.resx">
+      <DependentUpon>201706010919443_edit-nguoidichoonline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706010937522_edit-database1-6.resx">
+      <DependentUpon>201706010937522_edit-database1-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706010941467_add-new-nguoidichoonline.resx">
+      <DependentUpon>201706010941467_add-new-nguoidichoonline.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

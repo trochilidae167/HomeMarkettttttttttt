@@ -23,10 +23,11 @@ namespace HomeMarket.Controllers.APIController
         //}
 
         // GET: api/NguoiDiChoAPI/5
+        [Route("api/KhachHangAPI/{username}")]
         [ResponseType(typeof(NguoiDiCho))]
-        public IHttpActionResult GetNguoiDiCho(int id)
+        public IHttpActionResult GetNguoiDiCho(string username)
         {
-            NguoiDiCho nguoiDiCho = db.NguoiDiCho.Find(id);
+            NguoiDiCho nguoiDiCho = db.NguoiDiCho.SingleOrDefault(x=>x.UserName == username);
             if (nguoiDiCho == null)
             {
                 return NotFound();
@@ -36,15 +37,16 @@ namespace HomeMarket.Controllers.APIController
         }
 
         // PUT: api/NguoiDiChoAPI/5
+        [Route("api/KhachHangAPI/{username}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutNguoiDiCho(int id, NguoiDiCho nguoiDiCho)
+        public IHttpActionResult PutNguoiDiCho(string username, NguoiDiCho nguoiDiCho)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != nguoiDiCho.Id)
+            if (username != nguoiDiCho.UserName)
             {
                 return BadRequest();
             }
@@ -57,7 +59,7 @@ namespace HomeMarket.Controllers.APIController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!NguoiDiChoExists(id))
+                if (!NguoiDiChoExists(username))
                 {
                     return NotFound();
                 }
@@ -83,7 +85,7 @@ namespace HomeMarket.Controllers.APIController
             }
             nguoiDiCho.Status = false;
             nguoiDiCho.NgayDangKy = DateTime.Now;
-            NguoiDiChoOnline nguoidichoOnline = new NguoiDiChoOnline();
+            NguoiDiChoOnlines nguoidichoOnline = new NguoiDiChoOnlines();
             nguoidichoOnline.Id = nguoiDiCho.Id;
             nguoidichoOnline.Online = false;
             nguoidichoOnline.X = 0;
@@ -120,9 +122,9 @@ namespace HomeMarket.Controllers.APIController
             base.Dispose(disposing);
         }
 
-        private bool NguoiDiChoExists(int id)
+        private bool NguoiDiChoExists(string username)
         {
-            return db.NguoiDiCho.Count(e => e.Id == id) > 0;
+            return db.NguoiDiCho.Count(e => e.UserName == username) > 0;
         }
     }
 }

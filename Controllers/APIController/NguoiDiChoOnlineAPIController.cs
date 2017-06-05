@@ -16,25 +16,104 @@ namespace HomeMarket.Controllers.APIController
     {
         private HomeMarketDbContext db = new HomeMarketDbContext();
 
+        // GET: api/NguoiDiChoOnlineAPI
+        public IQueryable<NguoiDiChoOnlines> GetNguoiDiChoOnline()
+        {
+            return db.NguoiDiChoOnline;
+        }
+
+        // GET: api/NguoiDiChoOnlineAPI/5
+        [ResponseType(typeof(NguoiDiChoOnlines))]
+        public IHttpActionResult GetNguoiDiChoOnlines(int id)
+        {
+            NguoiDiChoOnlines nguoiDiChoOnlines = db.NguoiDiChoOnline.Find(id);
+            if (nguoiDiChoOnlines == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(nguoiDiChoOnlines);
+        }
 
         // PUT: api/NguoiDiChoOnlineAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutNguoiDiChoOnline(int id, NguoiDiChoOnline nguoiDiChoOnline)
+        public IHttpActionResult PutNguoiDiChoOnlines(int id, NguoiDiChoOnlines nguoiDiChoOnlines)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != nguoiDiChoOnline.Id)
+            if (id != nguoiDiChoOnlines.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(nguoiDiChoOnline).State = EntityState.Modified;
-            db.SaveChanges();
-            return Json("");
+            db.Entry(nguoiDiChoOnlines).State = EntityState.Modified;
 
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!NguoiDiChoOnlinesExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/NguoiDiChoOnlineAPI
+        [ResponseType(typeof(NguoiDiChoOnlines))]
+        public IHttpActionResult PostNguoiDiChoOnlines(NguoiDiChoOnlines nguoiDiChoOnlines)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.NguoiDiChoOnline.Add(nguoiDiChoOnlines);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (NguoiDiChoOnlinesExists(nguoiDiChoOnlines.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = nguoiDiChoOnlines.Id }, nguoiDiChoOnlines);
+        }
+
+        // DELETE: api/NguoiDiChoOnlineAPI/5
+        [ResponseType(typeof(NguoiDiChoOnlines))]
+        public IHttpActionResult DeleteNguoiDiChoOnlines(int id)
+        {
+            NguoiDiChoOnlines nguoiDiChoOnlines = db.NguoiDiChoOnline.Find(id);
+            if (nguoiDiChoOnlines == null)
+            {
+                return NotFound();
+            }
+
+            db.NguoiDiChoOnline.Remove(nguoiDiChoOnlines);
+            db.SaveChanges();
+
+            return Ok(nguoiDiChoOnlines);
         }
 
         protected override void Dispose(bool disposing)
@@ -46,7 +125,7 @@ namespace HomeMarket.Controllers.APIController
             base.Dispose(disposing);
         }
 
-        private bool NguoiDiChoOnlineExists(int id)
+        private bool NguoiDiChoOnlinesExists(int id)
         {
             return db.NguoiDiChoOnline.Count(e => e.Id == id) > 0;
         }

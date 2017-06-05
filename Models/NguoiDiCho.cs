@@ -11,7 +11,7 @@
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
- [StringLength(50)]
+        [StringLength(50)]
         [Display(Name = "Mã")]
         public string Ma { get; set; }
 

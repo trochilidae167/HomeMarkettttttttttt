@@ -29,10 +29,12 @@ namespace HomeMarket.Controllers
         //}
 
         // GET: api/KhachHangAPI/5
+        [Route("api/KhachHangAPI/{username}")]
         [ResponseType(typeof(KhachHang))]
-        public IHttpActionResult GetKhachHang(int id)
+        public IHttpActionResult GetKhachHang(string username /*int id*/)
         {
-            KhachHang khachHang = db.KhachHang.Find(id);
+            KhachHang khachHang = db.KhachHang.SingleOrDefault(x => x.UserName == username);
+            //KhachHang khachHang = db.KhachHang.Find(id);
             if (khachHang == null)
             {
                 return NotFound();
@@ -40,16 +42,17 @@ namespace HomeMarket.Controllers
             return Ok(khachHang);
         }
 
-        // PUT: api/KhachHangAPI/5
+        // PUT: api/KhachHangAPI/
+        [Route("api/KhachHangAPI/{username}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutKhachHang(int id, KhachHang khachHang)
+        public IHttpActionResult PutKhachHang(string username, KhachHang khachHang)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != khachHang.Id)
+            if (username != khachHang.UserName)
             {
                 return BadRequest();
             }
@@ -62,7 +65,7 @@ namespace HomeMarket.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KhachHangExists(id))
+                if (!KhachHangExists(username))
                 {
                     return NotFound();
                 }
@@ -134,9 +137,9 @@ namespace HomeMarket.Controllers
             base.Dispose(disposing);
         }
 
-        private bool KhachHangExists(int id)
+        private bool KhachHangExists(string username)
         {
-            return db.KhachHang.Count(e => e.Id == id) > 0;
+            return db.KhachHang.Count(e => e.UserName == username) > 0;
         }
     }
 }

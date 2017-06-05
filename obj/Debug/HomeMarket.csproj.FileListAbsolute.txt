@@ -73,4 +73,6 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.update_b
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatedatabase315.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatekhachhang315.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatenguoidichoOnline315.resources
-D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.csprojResolveAssemblyReference.cache
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editnguoidichoonline.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editdatabase16.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.addnewnguoidichoonline.resources
