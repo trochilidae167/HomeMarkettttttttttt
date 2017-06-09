@@ -17,15 +17,18 @@ namespace HomeMarket.Controllers
         private HomeMarketDbContext db = new HomeMarketDbContext();
 
         // GET: /KhachHang/
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page){
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        {
 
-		   var khachhangs = from s in db.KhachHang select s;				   
- 	
-			 //Search            
-            if (searchString != null) {
+            var khachhangs = from s in db.KhachHang select s;
+
+            //Search            
+            if (searchString != null)
+            {
                 page = 1;
             }
-            else {
+            else
+            {
                 searchString = currentFilter;
             }
 
@@ -33,16 +36,17 @@ namespace HomeMarket.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-				//AttributeSearch, AttributeSearch2 là những trường sẽ đem so sánh với nội dung tìm kiếm, cần thay đổi cho phù hợp
+                //AttributeSearch, AttributeSearch2 là những trường sẽ đem so sánh với nội dung tìm kiếm, cần thay đổi cho phù hợp
                 khachhangs = khachhangs.Where(s => s.Ma.Contains(searchString)
                                        || s.Ten.Contains(searchString));
             }
-            
+
             //Sort: AttributeSort là thuộc tính để sắp xếp, sẽ đi 1 căp AttributeSort và AttributeSort_desc,
-			// có thể có nhiều hơn 1 thuộc tính có thể sắp xếp => cần thay đổi cho phù hợp
+            // có thể có nhiều hơn 1 thuộc tính có thể sắp xếp => cần thay đổi cho phù hợp
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NgayDangKy = sortOrder == "NgayDangKy" ? "NgayDangKy_desc" : "NgayDangKy";
             ViewBag.Ma = sortOrder == "Ma" ? "Ma_desc" : "Ma";
+            ViewBag.Status = sortOrder == "Status" ? "Status_desc" : "Status";
             switch (sortOrder)
             {
                 case "Ma":
@@ -50,11 +54,17 @@ namespace HomeMarket.Controllers
                     break;
                 case "Ma_desc":
                     khachhangs = khachhangs.OrderByDescending(s => s.Ma);
-                    break;               
+                    break;
+                case "Status":
+                    khachhangs = khachhangs.OrderBy(s => s.Status == false);
+                    break;
+                case "Status_desc":
+                    khachhangs = khachhangs.OrderByDescending(s => s.Status == true);
+                    break;
                 case "NgayDangKy":
                     khachhangs = khachhangs.OrderBy(s => s.NgayDangKy);
                     break;
-                default: 
+                default:
                     khachhangs = khachhangs.OrderByDescending(s => s.NgayDangKy);
                     break;
             }
@@ -62,8 +72,8 @@ namespace HomeMarket.Controllers
             //Pagination
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-			
-			return View(khachhangs.ToPagedList(pageNumber, pageSize));
+
+            return View(khachhangs.ToPagedList(pageNumber, pageSize));
 
         }//End Index Actions
 
@@ -93,7 +103,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include = "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -127,7 +137,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include= "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -140,8 +150,8 @@ namespace HomeMarket.Controllers
                     nguoidicho.Status = true;
                 }
                 db.SaveChanges();
-                
-               
+
+
                 return RedirectToAction("Index");
             }
             return View(khachHang);
@@ -168,8 +178,20 @@ namespace HomeMarket.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             KhachHang khachHang = db.KhachHang.Find(id);
-            db.KhachHang.Remove(khachHang);
-            db.SaveChanges();
+            if (khachHang.NguoiDiCho == true)
+            {
+                var nguoidicho = db.NguoiDiCho.SingleOrDefault(x => x.Id == id);
+                var nguoidichoOnline = db.NguoiDiChoOnline.SingleOrDefault(x => x.Id == id);
+                db.KhachHang.Remove(khachHang);
+                db.NguoiDiChoOnline.Remove(nguoidichoOnline);
+                db.NguoiDiCho.Remove(nguoidicho);
+                db.SaveChanges();
+            }
+            else
+            {
+                db.KhachHang.Remove(khachHang);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

@@ -85,7 +85,7 @@ namespace HomeMarket.Controllers.APIController
             }
             var khachhang = db.KhachHang.SingleOrDefault(x => x.Id == donHang.KhachHangId);
             donHang.DonHangChiTiets.Count();
-            donHang.Ma = donHang.Id + "-" + DateTime.Now.ToString("ddmmyyyy");
+            donHang.Ma = donHang.Id.ToString();
             donHang.ThoiGianDat = DateTime.Now;
             donHang.DaNhan = false;
             db.DonHang.Add(donHang);
@@ -107,12 +107,10 @@ namespace HomeMarket.Controllers.APIController
             string noidung = "";
             noidung = "Đơn hàng "+ donHang.Id +" từ khách hàng có mã là: " + khachhang.Id + "<br>Với đơn hàng như sau:<br>" + donhangchitiet +
                         "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
-            Common.FindShipper.LookingForShipper(donHang.X, donHang.Y,noidung,"YeuCauNhanDonHang",donHang.Id);
+            //Common.FindShipper.LookingForShipper(donHang.X, donHang.Y,noidung,"YeuCauNhanDonHang",donHang.Id);
             return Json("Bạn vừa đặt thành công đơn hàng:<br>" +
                 "Họ tên: " + khachhang.Ten + 
                 "<br>Chi tiết sản phẩm:<br>"+donhangchitiet);
-            
-            //return CreatedAtRoute("DefaultApi", new { id = donHang.Id }, donHang);
         }
 
         // DELETE: api/DonHangAPI/5

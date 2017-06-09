@@ -1,15 +1,17 @@
-﻿namespace HomeMarket.Models
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
 
-    [Table("BangGiaCho")]
-    public partial class BangGiaCho
+namespace HomeMarket.Models
+{
+    public class BangGiaCho
     {
         public int Id { get; set; }
+
+        public int NCUId { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Mã thực phẩm")]
@@ -28,5 +30,8 @@
 
         [Display(Name = "Trạng thái")]
         public bool Status { get; set; }
+
+        [ForeignKey("NCUId")]
+        public virtual NhaCungUng NCU { get; set; }
     }
 }

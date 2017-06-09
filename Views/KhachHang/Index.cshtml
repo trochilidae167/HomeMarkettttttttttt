@@ -56,6 +56,8 @@
         <th>@Html.ActionLink("Ngày đăng ký", "Index", new { sortOrder = ViewBag.NgayDangKy, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
         <th>Người đi chợ</th>
+
+        <th>@Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.Status, currentFilter = ViewBag.CurrentFilter }, new { title = "Nhấp vào để sắp xếp" })</th>
 		
        
 		
@@ -83,6 +85,7 @@
         <td>@Html.DisplayFor(modelItem => item.Email)</td>
         <td>@Html.DisplayFor(modelItem => item.NgayDangKy)</td>
         <td>@Html.DisplayFor(modelItem => item.NguoiDiCho)</td>
+        <td>@Html.DisplayFor(modelItem => item.Status)</td>
 
     </tr>
 }

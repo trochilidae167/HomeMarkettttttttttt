@@ -94,7 +94,7 @@ namespace HomeMarket.Controllers
                 result = -2;
             if (result == 1)
             {
-                khachHang.Ma = DateTime.Now.ToString("ddmmyyyy") + khachHang.Id;
+                khachHang.Ma = khachHang.Id.ToString();
                 khachHang.Password = Encryptor.MD5Hash(khachHang.Password);
                 khachHang.NgayDangKy = DateTime.Now;
                 db.KhachHang.Add(khachHang);

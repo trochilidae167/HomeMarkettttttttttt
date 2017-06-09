@@ -23,7 +23,7 @@ namespace HomeMarket.Controllers.APIController
         //}
 
         // GET: api/NguoiDiChoAPI/5
-        [Route("api/KhachHangAPI/{username}")]
+        [Route("api/NguoiDiChoAPI/{username}")]
         [ResponseType(typeof(NguoiDiCho))]
         public IHttpActionResult GetNguoiDiCho(string username)
         {
@@ -37,7 +37,7 @@ namespace HomeMarket.Controllers.APIController
         }
 
         // PUT: api/NguoiDiChoAPI/5
-        [Route("api/KhachHangAPI/{username}")]
+        [Route("api/NguoiDiChoAPI/{username}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutNguoiDiCho(string username, NguoiDiCho nguoiDiCho)
         {

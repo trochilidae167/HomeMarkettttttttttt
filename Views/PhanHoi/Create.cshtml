@@ -1,73 +1,74 @@
 ﻿@model HomeMarket.Models.PhanHoi
 
 @{
-    Layout = null;
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+
+
+@section header{
+    Tạo mới
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+
+				@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
     
-    @section header{
-        Tạo mới
-    }
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-    
-    				@using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            @Html.ValidationSummary(true)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.KhachHangId, "KhachHangId", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("KhachHangId",  null, "Vui lòng chọn...", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.KhachHangId)
-                </div>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KhachHangId, "KhachHangId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("KhachHangId",  null, "Vui lòng chọn...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.KhachHangId)
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.NoiDung, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NoiDung)
-                    @Html.ValidationMessageFor(model => model.NoiDung)
-                </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoiDung, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoiDung)
+                @Html.ValidationMessageFor(model => model.NoiDung)
             </div>
-    
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.NgayTao, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NgayTao)
-                    @Html.ValidationMessageFor(model => model.NgayTao)
-                </div>
-            </div>*@
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Tạo mới" class="btn btn-primary" />
-    				@Html.ActionLink("Hủy bỏ", "Index", null, new { @class = "btn btn-danger"})
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayTao, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayTao)
+                @Html.ValidationMessageFor(model => model.NgayTao)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo mới" class="btn btn-primary" />
+				@Html.ActionLink("Hủy bỏ", "Index", null, new { @class = "btn btn-danger"})
+            </div>
+        </div>
+    </div>
+}
+
                 </div>
             </div>
         </div>
-    }
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-     </div>
-    
-     
-</body>
-</html>
+    </div>
+ </div>
+
+ 

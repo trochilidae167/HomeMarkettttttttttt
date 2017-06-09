@@ -15,12 +15,12 @@
         public int? KhachHangId { get; set; }
 
         [Column(TypeName = "ntext")]
-        [Display(Name = "Nôi dung")]
+        [Display(Name = "Nội dung")]
         public string NoiDung { get; set; }
 
         [Column(TypeName = "date")]
         [Display(Name = "Ngày gửi")]
-        public DateTime? NgayTao { get; set; }
+        public DateTime NgayTao { get; set; }
 
         [Display(Name = "Trạng thái")]
         public bool Status { get; set; }

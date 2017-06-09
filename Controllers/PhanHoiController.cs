@@ -33,27 +33,27 @@ namespace HomeMarket.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
 				//AttributeSearch, AttributeSearch2 là những trường sẽ đem so sánh với nội dung tìm kiếm, cần thay đổi cho phù hợp
-                phanhoi = phanhoi.Where(s => s.KhachHang.Ma.Contains(searchString));
+                phanhoi = phanhoi.Where(s => s.KhachHang.Ten.Contains(searchString));
             }
             
             //Sort: AttributeSort là thuộc tính để sắp xếp, sẽ đi 1 căp AttributeSort và AttributeSort_desc,
 			// có thể có nhiều hơn 1 thuộc tính có thể sắp xếp => cần thay đổi cho phù hợp
             ViewBag.CurrentSort = sortOrder;
             ViewBag.KhachHang = sortOrder == "KhachHang" ? "KhachHang_desc" : "KhachHang";
-            ViewBag.NgayTaoSortParm = sortOrder == "NgayTao" ? "NgayTao_desc" : "NgayTao";
+            ViewBag.Status = sortOrder == "Status" ? "Status_desc" : "Status";
             switch (sortOrder)
             {
                 case "KhachHang":
-                    phanhoi = phanhoi.OrderBy(s => s.KhachHang.Ma);
+                    phanhoi = phanhoi.OrderBy(s => s.KhachHang.Ten);
                     break;
                 case "KhachHang_desc":
-                    phanhoi = phanhoi.OrderByDescending(s => s.KhachHang.Ma);
+                    phanhoi = phanhoi.OrderByDescending(s => s.KhachHang.Ten);
                     break;               
-                case "NgayTao":
-                    phanhoi = phanhoi.OrderBy(s => s.NgayTao);
+                case "Status":
+                    phanhoi = phanhoi.OrderBy(s => s.Status == true);
                     break;
                 default: 
-                    phanhoi = phanhoi.OrderByDescending(s => s.NgayTao);
+                    phanhoi = phanhoi.OrderByDescending(s => s.Status == false);
                     break;
             }
 
@@ -83,7 +83,7 @@ namespace HomeMarket.Controllers
         // GET: /PhanHoi/Create
         public ActionResult Create()
         {
-            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ma");
+            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ten");
             return View();
         }
 
@@ -92,17 +92,16 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,KhachHangId,NoiDung,NgayTao")] PhanHoi phanHoi)
+        public ActionResult Create([Bind(Include="Id,KhachHangId,NoiDung,NgayTao,Status")] PhanHoi phanHoi)
         {
             if (ModelState.IsValid)
             {
-                phanHoi.NgayTao = DateTime.Now;
                 db.PhanHoi.Add(phanHoi);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ma", phanHoi.KhachHangId);
+            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ten", phanHoi.KhachHangId);
             return View(phanHoi);
         }
 
@@ -118,7 +117,7 @@ namespace HomeMarket.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ma", phanHoi.KhachHangId);
+            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ten", phanHoi.KhachHangId);
             return View(phanHoi);
         }
 
@@ -127,7 +126,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,KhachHangId,NoiDung,NgayTao")] PhanHoi phanHoi)
+        public ActionResult Edit([Bind(Include="Id,KhachHangId,NoiDung,NgayTao,Status")] PhanHoi phanHoi)
         {
             if (ModelState.IsValid)
             {
@@ -135,7 +134,7 @@ namespace HomeMarket.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ma", phanHoi.KhachHangId);
+            ViewBag.KhachHangId = new SelectList(db.KhachHang, "Id", "Ten", phanHoi.KhachHangId);
             return View(phanHoi);
         }
 

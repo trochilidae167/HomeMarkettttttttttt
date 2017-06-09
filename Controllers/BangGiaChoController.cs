@@ -18,7 +18,7 @@ namespace HomeMarket.Controllers
         // GET: /BangGiaCho/
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page){
 
-		   var banggiacho = from s in db.BangGiaCho select s;				   
+           var banggiacho = db.BangGiaCho.Include(b => b.NCU);		
  	
 			 //Search            
             if (searchString != null) {
@@ -34,27 +34,30 @@ namespace HomeMarket.Controllers
             {
 				//AttributeSearch, AttributeSearch2 là những trường sẽ đem so sánh với nội dung tìm kiếm, cần thay đổi cho phù hợp
                 banggiacho = banggiacho.Where(s => s.TenThucPham.Contains(searchString)
-                                       || s.MaThucPham.Contains(searchString));
+                                       || s.MaThucPham.Contains(searchString)
+                                       || s.NCU.Ten.Contains(searchString));
             }
             
             //Sort: AttributeSort là thuộc tính để sắp xếp, sẽ đi 1 căp AttributeSort và AttributeSort_desc,
 			// có thể có nhiều hơn 1 thuộc tính có thể sắp xếp => cần thay đổi cho phù hợp
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.Gia = sortOrder == "Gia" ? "Gia_desc" : "Gia";
-            ViewBag.Loai = sortOrder == "Loai" ? "Loai_desc" : "Loai";
+            ViewBag.TenThucPham = sortOrder == "TenThucPham" ? "TenThucPham_desc" : "TenThucPham";
+            ViewBag.MaThucPham = sortOrder == "MaThucPham" ? "MaThucPham_desc" : "MaThucPham";
+            ViewBag.NCUId = sortOrder == "NCUId" ? "NCUId_desc" : "NCUId";
             switch (sortOrder)
             {
-                case "Loai":
-                    banggiacho = banggiacho.OrderBy(s => s.LoaiThucPham);
+               
+                case "TenThucPham":
+                    banggiacho = banggiacho.OrderBy(s => s.TenThucPham);
                     break;
-                case "Loai_desc":
-                    banggiacho = banggiacho.OrderByDescending(s => s.LoaiThucPham);
+                case "TenThucPham_desc":
+                    banggiacho = banggiacho.OrderByDescending(s => s.TenThucPham);
                     break;               
-                case "Gia":
-                    banggiacho = banggiacho.OrderBy(s => s.GiaThucPham);
+                case "NCUId":
+                    banggiacho = banggiacho.OrderBy(s => s.NCU.Ten);
                     break;
                 default: 
-                    banggiacho = banggiacho.OrderByDescending(s => s.GiaThucPham);
+                    banggiacho = banggiacho.OrderByDescending(s => s.NCU.Ten);
                     break;
             }
 
@@ -84,6 +87,7 @@ namespace HomeMarket.Controllers
         // GET: /BangGiaCho/Create
         public ActionResult Create()
         {
+            ViewBag.NCUId = new SelectList(db.NhaCungUng, "Id", "Ten");
             return View();
         }
 
@@ -92,7 +96,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham")] BangGiaCho bangGiaCho)
+        public ActionResult Create([Bind(Include="Id,NCUId,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham,Status")] BangGiaCho bangGiaCho)
         {
             if (ModelState.IsValid)
             {
@@ -101,6 +105,7 @@ namespace HomeMarket.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.NCUId = new SelectList(db.NhaCungUng, "Id", "Ten", bangGiaCho.NCUId);
             return View(bangGiaCho);
         }
 
@@ -116,6 +121,7 @@ namespace HomeMarket.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.NCUId = new SelectList(db.NhaCungUng, "Id", "Ten", bangGiaCho.NCUId);
             return View(bangGiaCho);
         }
 
@@ -124,7 +130,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham")] BangGiaCho bangGiaCho)
+        public ActionResult Edit([Bind(Include="Id,NCUId,MaThucPham,TenThucPham,LoaiThucPham,GiaThucPham,Status")] BangGiaCho bangGiaCho)
         {
             if (ModelState.IsValid)
             {
@@ -132,6 +138,7 @@ namespace HomeMarket.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.NCUId = new SelectList(db.NhaCungUng, "Id", "Ten", bangGiaCho.NCUId);
             return View(bangGiaCho);
         }
 

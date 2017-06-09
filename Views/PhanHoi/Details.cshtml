@@ -1,84 +1,78 @@
 ﻿@model HomeMarket.Models.PhanHoi
 
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    
-    
-    @section header{
-        Chi tiết
-    }
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">              
-                    <div class="ibox-content">
-    
-    
-    				    <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.KhachHang.Ma)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.KhachHang.Ma)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.NoiDung)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NoiDung)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.NgayTao)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NgayTao)
-            </dd>
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Status)
-                            </dt>
 
-                            <dd>
-                                @Html.DisplayFor(model => model.Status)
-                            </dd>
-    
-        </dl>
-    
-    
-    	    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"})
-        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger"})
-    
-                    </div>
+
+
+@section header{
+    Chi tiết
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">              
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger"})
+
                 </div>
             </div>
         </div>
-     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</body>
-</html>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

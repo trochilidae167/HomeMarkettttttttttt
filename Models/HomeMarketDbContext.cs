@@ -24,6 +24,7 @@ namespace HomeMarket.Models
         public virtual DbSet<LienHe> LienHe { get; set; }
         public virtual DbSet<NguoiDiCho> NguoiDiCho { get; set; }
         public virtual DbSet<NguoiDiChoOnlines> NguoiDiChoOnline { get; set; }
+        public virtual DbSet<NhaCungUng> NhaCungUng { get; set; }
         public virtual DbSet<NhanDonHang> NhanDonHang { get; set; }
         public virtual DbSet<PhanHoi> PhanHoi { get; set; }
         public virtual DbSet<Role> Role { get; set; }

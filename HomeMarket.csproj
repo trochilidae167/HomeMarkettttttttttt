@@ -144,6 +144,7 @@
     <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\SendNotification.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\APIController\BangGiaChoAPIController.cs" />
     <Compile Include="Controllers\APIController\BangGiaSieuThiAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangChiTietAPIController.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Controllers\APIController\LoginAPIController.cs" />
     <Compile Include="Controllers\APIController\NguoiDiChoAPIController.cs" />
     <Compile Include="Controllers\APIController\NguoiDiChoOnlineAPIController.cs" />
+    <Compile Include="Controllers\APIController\NhaCungUngAPIController.cs" />
     <Compile Include="Controllers\APIController\NhanDonHangAPIController.cs" />
     <Compile Include="Controllers\APIController\PhanHoiAPIController.cs" />
     <Compile Include="Controllers\BangGiaChoController.cs" />
@@ -160,8 +162,10 @@
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NguoiDiChoController.cs" />
+    <Compile Include="Controllers\NhaCungUngController.cs" />
     <Compile Include="Controllers\PhanHoiController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Dao\QuanLy.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -274,6 +278,30 @@
     <Compile Include="Migrations\201706010941467_add-new-nguoidichoonline.Designer.cs">
       <DependentUpon>201706010941467_add-new-nguoidichoonline.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706061106215_update-database-6-6.cs" />
+    <Compile Include="Migrations\201706061106215_update-database-6-6.Designer.cs">
+      <DependentUpon>201706061106215_update-database-6-6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061115557_update-database-6-6-1.cs" />
+    <Compile Include="Migrations\201706061115557_update-database-6-6-1.Designer.cs">
+      <DependentUpon>201706061115557_update-database-6-6-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061139454_add-FK_banggiacho-NhaCungUng.cs" />
+    <Compile Include="Migrations\201706061139454_add-FK_banggiacho-NhaCungUng.Designer.cs">
+      <DependentUpon>201706061139454_add-FK_banggiacho-NhaCungUng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061237593_update-database-6-6-2.cs" />
+    <Compile Include="Migrations\201706061237593_update-database-6-6-2.Designer.cs">
+      <DependentUpon>201706061237593_update-database-6-6-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706070239049_edit-PhanHoi.cs" />
+    <Compile Include="Migrations\201706070239049_edit-PhanHoi.Designer.cs">
+      <DependentUpon>201706070239049_edit-PhanHoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706091225529_edit-donhang-9-6.cs" />
+    <Compile Include="Migrations\201706091225529_edit-donhang-9-6.Designer.cs">
+      <DependentUpon>201706091225529_edit-donhang-9-6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
     <Compile Include="Models\BangGiaSieuThi.cs" />
@@ -289,6 +317,7 @@
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\NguoiDiCho.cs" />
     <Compile Include="Models\NguoiDiChoOnlines.cs" />
+    <Compile Include="Models\NhaCungUng.cs" />
     <Compile Include="Models\NhanDonHang.cs" />
     <Compile Include="Models\PhanHoi.cs" />
     <Compile Include="Models\Role.cs" />
@@ -319,11 +348,6 @@
     <Content Include="Views\KhachHang\Details.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
-    <Content Include="Views\BangGiaCho\Create.cshtml" />
-    <Content Include="Views\BangGiaCho\Delete.cshtml" />
-    <Content Include="Views\BangGiaCho\Details.cshtml" />
-    <Content Include="Views\BangGiaCho\Edit.cshtml" />
-    <Content Include="Views\BangGiaCho\Index.cshtml" />
     <Content Include="Views\GioiThieu\Create.cshtml" />
     <Content Include="Views\GioiThieu\Delete.cshtml" />
     <Content Include="Views\GioiThieu\Details.cshtml" />
@@ -338,6 +362,16 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\401.cshtml" />
+    <Content Include="Views\NhaCungUng\Create.cshtml" />
+    <Content Include="Views\NhaCungUng\Delete.cshtml" />
+    <Content Include="Views\NhaCungUng\Details.cshtml" />
+    <Content Include="Views\NhaCungUng\Edit.cshtml" />
+    <Content Include="Views\NhaCungUng\Index.cshtml" />
+    <Content Include="Views\BangGiaCho\Create.cshtml" />
+    <Content Include="Views\BangGiaCho\Delete.cshtml" />
+    <Content Include="Views\BangGiaCho\Details.cshtml" />
+    <Content Include="Views\BangGiaCho\Edit.cshtml" />
+    <Content Include="Views\BangGiaCho\Index.cshtml" />
     <Content Include="Views\PhanHoi\Create.cshtml" />
     <Content Include="Views\PhanHoi\Delete.cshtml" />
     <Content Include="Views\PhanHoi\Details.cshtml" />
@@ -442,6 +476,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706010941467_add-new-nguoidichoonline.resx">
       <DependentUpon>201706010941467_add-new-nguoidichoonline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061106215_update-database-6-6.resx">
+      <DependentUpon>201706061106215_update-database-6-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061115557_update-database-6-6-1.resx">
+      <DependentUpon>201706061115557_update-database-6-6-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061139454_add-FK_banggiacho-NhaCungUng.resx">
+      <DependentUpon>201706061139454_add-FK_banggiacho-NhaCungUng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061237593_update-database-6-6-2.resx">
+      <DependentUpon>201706061237593_update-database-6-6-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070239049_edit-PhanHoi.resx">
+      <DependentUpon>201706070239049_edit-PhanHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706091225529_edit-donhang-9-6.resx">
+      <DependentUpon>201706091225529_edit-donhang-9-6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

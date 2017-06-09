@@ -76,3 +76,9 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updateng
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editnguoidichoonline.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editdatabase16.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.addnewnguoidichoonline.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatedatabase66.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatedatabase661.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.addFK_banggiachoNhaCungUng.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatedatabase662.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editPhanHoi.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editdonhang96.resources

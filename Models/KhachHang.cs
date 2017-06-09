@@ -68,13 +68,13 @@
 
         [Column(TypeName = "date")]
         [Display(Name = "Ngày đăng ký")]
-        public DateTime? NgayDangKy { get; set; }
+        public DateTime NgayDangKy { get; set; }
 
         [Display(Name = "Người đi chợ")]
-        public bool? NguoiDiCho { get; set; }
+        public bool NguoiDiCho { get; set; }
 
         [Display(Name = "Trạng thái")]
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }

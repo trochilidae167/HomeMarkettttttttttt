@@ -67,7 +67,7 @@ namespace HomeMarket.Controllers.APIController
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Json("Cập nhật thành công");
         }
 
         // POST: api/NguoiDiChoOnlineAPI
