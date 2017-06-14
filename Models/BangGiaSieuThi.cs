@@ -22,6 +22,10 @@
         [StringLength(50)]
         [Display(Name = "Loại thực phẩm")]
         public string LoaiThucPham { get; set; }
+
+        [Display(Name = "Khối lượng")]
+        public float KhoiLuong { get; set; } 
+
         [Display(Name = "Giá thực phẩm")]
         public double GiaThucPham { get; set; }
 

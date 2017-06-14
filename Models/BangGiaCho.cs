@@ -25,6 +25,9 @@ namespace HomeMarket.Models
         [Display(Name = "Loại thực phẩm")]
         public string LoaiThucPham { get; set; }
 
+        [Display(Name = "Khối lượng")]
+        public float KhoiLuong { get; set; }
+
         [Display(Name = "Giá")]
         public double GiaThucPham { get; set; }
 

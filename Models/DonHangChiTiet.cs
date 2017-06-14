@@ -11,18 +11,18 @@ namespace HomeMarket.Models
     {
         public int Id { get; set; }
 
-        public int? DonHangId { get; set; }
+        public int DonHangId { get; set; }
 
-        public int? ThucPhamId { get; set; }
+        public int ThucPhamId { get; set; }
 
         [StringLength(250)]
         public string TenThucPham { get; set; }
 
-        public double? SoLuong { get; set; }
+        public double SoLuong { get; set; }
 
-        public double? Gia { get; set; }
+        public double Gia { get; set; }
 
-        public int? NCUId { get; set; }
+        public int NCUId { get; set; }
 
         public virtual DonHang DonHang { get; set; }
     }

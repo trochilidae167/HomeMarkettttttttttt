@@ -83,13 +83,18 @@ namespace HomeMarket.Controllers.APIController
             {
                 return BadRequest(ModelState);
             }
+            var giadonhang = new GiaDonHang();
             var khachhang = db.KhachHang.SingleOrDefault(x => x.Id == donHang.KhachHangId);
             donHang.DonHangChiTiets.Count();
-            donHang.Ma = donHang.Id.ToString();
+            donHang.Ma = donHang.KhachHangId + DateTime.Now.ToString("ddmmyyyyhhmm");
             donHang.ThoiGianDat = DateTime.Now;
             donHang.DaNhan = false;
             db.DonHang.Add(donHang);
             db.SaveChanges();
+         
+            giadonhang.DonHangId = donHang.Id;
+            double tongtien = 0;
+           
             string donhangchitiet = "";
             List<int> list = new List<int>();
             var m = db.DonHangChiTiet.Where(x => x.DonHangId == donHang.Id);
@@ -98,19 +103,29 @@ namespace HomeMarket.Controllers.APIController
             {
                 list.Add(x.Id);
             }
-            for(int i=0;i<list.Count();i++)
+            for (int i=0;i<list.Count();i++)
+            {
+                tongtien = tongtien + db.DonHangChiTiet.Find(list[i]).Gia;
+            }
+            giadonhang.TongTien = tongtien;
+            giadonhang.PhiDichVu = 5000;
+            db.GiaDonHang.Add(giadonhang);
+            db.SaveChanges();
+            for (int i=0;i<list.Count();i++)
             {
                 donhangchitiet = donhangchitiet + "Tên thực phẩm:" + db.DonHangChiTiet.Find(list[i]).TenThucPham+
                                   "<br>Số lượng:"+ db.DonHangChiTiet.Find(list[i]).SoLuong+"/kg"+
                                   "<br>Giá tiền:"+ db.DonHangChiTiet.Find(list[i]).Gia+"/VND" + "<br>";
             }
             string noidung = "";
-            noidung = "Đơn hàng "+ donHang.Id +" từ khách hàng có mã là: " + khachhang.Id + "<br>Với đơn hàng như sau:<br>" + donhangchitiet +
+            noidung = "Đơn hàng "+ donHang.Id +" từ khách hàng có mã là: " + khachhang.Id + "<br>Với đơn hàng như sau:<br>" + donhangchitiet + "Tổng số tiền là: "+ tongtien +
                         "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
-            //Common.FindShipper.LookingForShipper(donHang.X, donHang.Y,noidung,"YeuCauNhanDonHang",donHang.Id);
-            return Json("Bạn vừa đặt thành công đơn hàng:<br>" +
-                "Họ tên: " + khachhang.Ten + 
-                "<br>Chi tiết sản phẩm:<br>"+donhangchitiet);
+            FindShipper.LookingForShipper(donHang.X, donHang.Y, noidung, "YeuCauNhanDonHang", donHang.Id);
+            string noidung1 = "Bạn vừa đặt thành công đơn hàng:<br>" +
+               "Họ tên: " + khachhang.Ten +
+               "<br>Chi tiết sản phẩm:<br>" + donhangchitiet;
+            SendNotification.SendNotifications(noidung1,"DatHangThanhCong",khachhang.Id);
+            return Json(donHang.Id);
         }
 
         // DELETE: api/DonHangAPI/5

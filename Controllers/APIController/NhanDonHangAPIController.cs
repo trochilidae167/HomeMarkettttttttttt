@@ -84,6 +84,7 @@ namespace HomeMarket.Controllers.APIController
             var nguoidichoOnline = db.NguoiDiChoOnline.SingleOrDefault(y=>y.Id == nguoidicho.Id);
             if(nhanDonHang.Status == true)
             {
+
                 nhanDonHang.Id = donhang.Id;
                 db.NhanDonHang.Add(nhanDonHang);
                 db.SaveChanges();
@@ -105,6 +106,7 @@ namespace HomeMarket.Controllers.APIController
                 List<int> list = new List<int>();
                 var m = db.DonHangChiTiet.Where(x => x.DonHangId == donhang.Id);
                 long n = m.Count();
+                double tongtien = 0;
                 foreach (DonHangChiTiet x in m)
                 {
                     list.Add(x.Id);
@@ -115,9 +117,14 @@ namespace HomeMarket.Controllers.APIController
                                       "<br>Số lượng:" + db.DonHangChiTiet.Find(list[i]).SoLuong + "/kg" +
                                       "<br>Giá tiền:" + db.DonHangChiTiet.Find(list[i]).Gia + "/VND" + "<br>";
                 }
+                for (int i = 0; i < list.Count(); i++)
+                {
+                    tongtien = tongtien + db.DonHangChiTiet.Find(list[i]).Gia;
+                }
                 string noidung = "";
-                noidung = "Đơn hàng " + donhang.Id + " từ khách hàng có mã là: " + donhang.KhachHangId + "<br>Với đơn hàng như sau:<br>" + donhangchitiet +
-                            "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
+                noidung = "Đơn hàng " + donhang.Id + " từ khách hàng có mã là: " + donhang.KhachHangId + "<br>Với đơn hàng như sau:<br>" 
+                    + donhangchitiet  +"Tổng số tiền là: " + tongtien  +
+                    "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
                 FindShipper.LookingForShipper(donhang.X,donhang.Y, noidung, "YeuCauNhanDonHang",donhang.Id);
             }
 

@@ -157,6 +157,7 @@
     <Compile Include="Controllers\APIController\PhanHoiAPIController.cs" />
     <Compile Include="Controllers\BangGiaChoController.cs" />
     <Compile Include="Controllers\BangGiaSieuThiController.cs" />
+    <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
@@ -302,6 +303,10 @@
     <Compile Include="Migrations\201706091225529_edit-donhang-9-6.Designer.cs">
       <DependentUpon>201706091225529_edit-donhang-9-6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706131011540_edit-database-13-6.cs" />
+    <Compile Include="Migrations\201706131011540_edit-database-13-6.Designer.cs">
+      <DependentUpon>201706131011540_edit-database-13-6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
     <Compile Include="Models\BangGiaSieuThi.cs" />
@@ -377,6 +382,11 @@
     <Content Include="Views\PhanHoi\Details.cshtml" />
     <Content Include="Views\PhanHoi\Edit.cshtml" />
     <Content Include="Views\PhanHoi\Index.cshtml" />
+    <Content Include="Views\DonHang\Create.cshtml" />
+    <Content Include="Views\DonHang\Delete.cshtml" />
+    <Content Include="Views\DonHang\Details.cshtml" />
+    <Content Include="Views\DonHang\Edit.cshtml" />
+    <Content Include="Views\DonHang\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -494,6 +504,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706091225529_edit-donhang-9-6.resx">
       <DependentUpon>201706091225529_edit-donhang-9-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706131011540_edit-database-13-6.resx">
+      <DependentUpon>201706131011540_edit-database-13-6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

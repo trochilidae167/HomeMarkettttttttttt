@@ -1,0 +1,102 @@
+﻿@model HomeMarket.Models.DonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+@section header{
+    Chi tiết
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">              
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHangId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHangId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NCUId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NCUId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.X)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.X)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Y)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Y)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

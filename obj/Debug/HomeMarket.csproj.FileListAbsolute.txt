@@ -82,3 +82,4 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.addFK_ba
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updatedatabase662.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editPhanHoi.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editdonhang96.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editdatabase136.resources
