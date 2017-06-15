@@ -86,12 +86,13 @@ namespace HomeMarket.Controllers.APIController
             var giadonhang = new GiaDonHang();
             var khachhang = db.KhachHang.SingleOrDefault(x => x.Id == donHang.KhachHangId);
             donHang.DonHangChiTiets.Count();
-            donHang.Ma = donHang.KhachHangId + DateTime.Now.ToString("ddmmyyyyhhmm");
+           
             donHang.ThoiGianDat = DateTime.Now;
             donHang.DaNhan = false;
             db.DonHang.Add(donHang);
             db.SaveChanges();
-         
+            db.Entry(donHang).State = EntityState.Modified;
+            donHang.Ma = donHang.Id.ToString();
             giadonhang.DonHangId = donHang.Id;
             double tongtien = 0;
            

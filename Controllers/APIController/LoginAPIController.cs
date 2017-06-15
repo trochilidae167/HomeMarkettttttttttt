@@ -17,14 +17,22 @@ namespace HomeMarket.Controllers.APIController
         public IHttpActionResult Login(KhachHang khachHang)
         {
             var result = db.KhachHang.SingleOrDefault(x => x.UserName == khachHang.UserName);
-            if(result==null)
+            
+            db.Entry(result).State = EntityState.Modified;
+            if (result==null)
             {
                 return Json("0");
             }
             else
             {
                 if (result.Password == Encryptor.MD5Hash(khachHang.Password))
-                    return Json("1");
+                {
+                    result.RegistrationId = khachHang.RegistrationId;
+                    db.SaveChanges();
+                    return Json("1");                    
+                }
+                    
+                
                 else
                     return Json("-1");
             }

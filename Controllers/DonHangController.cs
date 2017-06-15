@@ -155,6 +155,13 @@ namespace HomeMarket.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             DonHang donHang = db.DonHang.Find(id);
+            var giadonhang = db.GiaDonHang.SingleOrDefault(x => x.DonHangId == id);
+            var donhangchitiet = db.DonHangChiTiet.Where(y => y.DonHangId == id).ToList();
+            for(int i = 0;i<donhangchitiet.Count();i++)
+            {
+                db.DonHangChiTiet.Remove(donhangchitiet[i]);
+            }
+            db.GiaDonHang.Remove(giadonhang);
             db.DonHang.Remove(donHang);
             db.SaveChanges();
             return RedirectToAction("Index");
