@@ -124,11 +124,18 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,Ma,Ten,HinhAnh,NgaySinh,QuocTich,SDT,CMND,DiaChi,Email,DanhGia,TaiKhoan,NgayDangKy")] NguoiDiCho nguoiDiCho)
+        public ActionResult Edit([Bind(Include="Id,Ma,Ten,HinhAnh,NgaySinh,QuocTich,SDT,CMND,DiaChi,Email,Status,DanhGia,TaiKhoan,NgayDangKy")] NguoiDiCho nguoiDiCho)
         {
             if (ModelState.IsValid)
             {
+                var khachhang = db.KhachHang.SingleOrDefault(x => x.Id == nguoiDiCho.Id);
+                if (nguoiDiCho.Status == true)
+                {
+                    khachhang.NguoiDiCho = true;
+                }
                 db.Entry(nguoiDiCho).State = EntityState.Modified;
+                db.Entry(khachhang).State = EntityState.Modified;
+              
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

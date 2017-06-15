@@ -85,6 +85,7 @@ namespace HomeMarket.Controllers.APIController
             }
             nguoiDiCho.Status = false;
             nguoiDiCho.NgayDangKy = DateTime.Now;
+            nguoiDiCho.DanhGia = 1;
             NguoiDiChoOnlines nguoidichoOnline = new NguoiDiChoOnlines();
             nguoidichoOnline.Id = nguoiDiCho.Id;
             nguoidichoOnline.Online = false;

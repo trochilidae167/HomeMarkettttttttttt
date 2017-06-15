@@ -141,14 +141,9 @@ namespace HomeMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                var nguoidicho = db.NguoiDiCho.SingleOrDefault(x => x.Id == khachHang.Id);
+
                 db.Entry(khachHang).State = EntityState.Modified;
-                khachHang.Password = Encryptor.MD5Hash(khachHang.Password);
                 khachHang.NgayDangKy = DateTime.Now;
-                if (khachHang.NguoiDiCho == true)
-                {
-                    nguoidicho.Status = true;
-                }
                 db.SaveChanges();
 
 

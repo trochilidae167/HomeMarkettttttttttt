@@ -94,10 +94,13 @@ namespace HomeMarket.Controllers
                 result = -2;
             if (result == 1)
             {
-                khachHang.Ma = khachHang.Id.ToString();
+                
                 khachHang.Password = Encryptor.MD5Hash(khachHang.Password);
                 khachHang.NgayDangKy = DateTime.Now;
                 db.KhachHang.Add(khachHang);
+                db.SaveChanges();
+                db.Entry(khachHang).State = EntityState.Modified;
+                khachHang.Ma = khachHang.Id.ToString();
                 db.SaveChanges();
                 return Json("1");
             }
