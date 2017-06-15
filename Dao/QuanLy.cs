@@ -23,7 +23,7 @@ namespace HomeMarket.Dao
         }
         public List<NguoiDiCho> NguoiDiChoMoi()
         {
-            return db.NguoiDiCho.Where(x => x.Status == false).ToList();
+            return db.NguoiDiCho.Where(x=>x.Id != 0).ToList();
         }
         public List<PhanHoi> PhanHoiMoi()
         {
