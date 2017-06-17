@@ -1,4 +1,4 @@
-namespace HomeMarket.Models
+﻿namespace HomeMarket.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,14 +9,14 @@ namespace HomeMarket.Models
     [Table("NhanDonHang")]
     public partial class NhanDonHang
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+
         public int Id { get; set; }
 
-        [StringLength(50)]
-        public string MaDonHang { get; set; }
 
-        [StringLength(50)]
-        public string MaNguoiDiCho { get; set; }
+        public int DonHangId { get; set; }
+
+
+        public int NguoiDiChoId { get; set; }
 
         public DateTime ThoiGianNhan { get; set; }
 

@@ -83,3 +83,7 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.updateda
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editPhanHoi.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editdonhang96.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations.editdatabase136.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations._166.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations._176.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations._1762.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Debug\HomeMarket.Migrations._1763.resources

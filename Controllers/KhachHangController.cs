@@ -103,7 +103,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include = "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho,RegistrationId")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +137,7 @@ namespace HomeMarket.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "Id,Ma,Ten,UserName,Password,HinhAnh,NgaySinh,QuocTich,SDT,DiaChi,Email,NgayDangKy,NguoiDiCho,RegistrationId")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {

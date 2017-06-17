@@ -11,12 +11,10 @@ namespace HomeMarket.Models
     {
         public int Id { get; set; }
 
-        public int? DonHangId { get; set; }
+        public int DonHangId { get; set; }
 
-        public double? TongTien { get; set; }
+        public double TongTien { get; set; }
 
-        public double? PhiDichVu { get; set; }
-
-        public virtual DonHang DonHang { get; set; }
+        public double PhiDichVu { get; set; }
     }
 }

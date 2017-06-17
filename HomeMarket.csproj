@@ -307,6 +307,22 @@
     <Compile Include="Migrations\201706131011540_edit-database-13-6.Designer.cs">
       <DependentUpon>201706131011540_edit-database-13-6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706160956081_16-6.cs" />
+    <Compile Include="Migrations\201706160956081_16-6.Designer.cs">
+      <DependentUpon>201706160956081_16-6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706171513028_17-6.cs" />
+    <Compile Include="Migrations\201706171513028_17-6.Designer.cs">
+      <DependentUpon>201706171513028_17-6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706171524148_17-6-2.cs" />
+    <Compile Include="Migrations\201706171524148_17-6-2.Designer.cs">
+      <DependentUpon>201706171524148_17-6-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706171525116_17-6-3.cs" />
+    <Compile Include="Migrations\201706171525116_17-6-3.Designer.cs">
+      <DependentUpon>201706171525116_17-6-3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
     <Compile Include="Models\BangGiaSieuThi.cs" />
@@ -507,6 +523,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706131011540_edit-database-13-6.resx">
       <DependentUpon>201706131011540_edit-database-13-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706160956081_16-6.resx">
+      <DependentUpon>201706160956081_16-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171513028_17-6.resx">
+      <DependentUpon>201706171513028_17-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171524148_17-6-2.resx">
+      <DependentUpon>201706171524148_17-6-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706171525116_17-6-3.resx">
+      <DependentUpon>201706171525116_17-6-3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

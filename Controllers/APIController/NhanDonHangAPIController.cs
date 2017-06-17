@@ -79,57 +79,64 @@ namespace HomeMarket.Controllers.APIController
             {
                 return BadRequest(ModelState);
             }
-            var donhang = db.DonHang.SingleOrDefault(x => x.Ma == nhanDonHang.MaDonHang);
-            var nguoidicho = db.NguoiDiCho.SingleOrDefault(x => x.Ma == nhanDonHang.MaNguoiDiCho);
+            var donhang = db.DonHang.SingleOrDefault(x => x.Id == nhanDonHang.DonHangId);
+            var nguoidicho = db.NguoiDiCho.SingleOrDefault(x => x.Id == nhanDonHang.NguoiDiChoId);
             var nguoidichoOnline = db.NguoiDiChoOnline.SingleOrDefault(y=>y.Id == nguoidicho.Id);
             if(nhanDonHang.Status == true)
             {
-
-                nhanDonHang.Id = donhang.Id;
+                nhanDonHang.ThoiGianNhan = DateTime.Now;
                 db.NhanDonHang.Add(nhanDonHang);
                 db.SaveChanges();
-                string noidung = "Đơn hàng số " + nhanDonHang.MaDonHang + "của bạn đã được Người đi chợ số " + nhanDonHang.MaNguoiDiCho + "chấp nhận."
+                string noidung = "Đơn hàng số " + nhanDonHang.DonHangId + "của bạn đã được Người đi chợ số " + nhanDonHang.NguoiDiChoId + "chấp nhận."
                                   +"<br>Thông tin chi tiết Người đi chợ: "
                                   +"<br>Họ tên: "+nguoidicho.Ten
                                   +"<br>SĐT: "+nguoidicho.SDT;
                 Common.SendNotification.SendNotifications(noidung,"NhanDonHang",donhang.KhachHangId);
                 nguoidicho.TaiKhoan = nguoidicho.TaiKhoan - 5000;
-                string trutaikhoan = "Tài khoản của bạn đã bị trừ 5000đ phí dịch vụ vì bạn đã nhận thực hiện đơn hàng số " + nhanDonHang.MaDonHang;
+                string trutaikhoan = "Tài khoản của bạn đã bị trừ 5000đ phí dịch vụ vì bạn đã nhận thực hiện đơn hàng số " + nhanDonHang.DonHangId;
                 SendNotification.SendNotifications(trutaikhoan, "TruTaiKhoan", nguoidicho.Id);
 
             }
             if (nhanDonHang.Status == false)
             {
-                nguoidichoOnline.Refuse = nhanDonHang.Id;
-                db.SaveChanges();
-                string donhangchitiet = "";
-                List<int> list = new List<int>();
-                var m = db.DonHangChiTiet.Where(x => x.DonHangId == donhang.Id);
-                long n = m.Count();
-                double tongtien = 0;
-                foreach (DonHangChiTiet x in m)
+                try
                 {
-                    list.Add(x.Id);
+                    db.Entry(nguoidichoOnline).State = EntityState.Modified;
+                    nguoidichoOnline.Refuse = nhanDonHang.DonHangId;
+                    db.SaveChanges();
+                    string donhangchitiet = "";
+                    List<int> list = new List<int>();
+                    var m = db.DonHangChiTiet.Where(x => x.DonHangId == donhang.Id);
+                    long n = m.Count();
+                    double tongtien = 0;
+                    foreach (DonHangChiTiet x in m)
+                    {
+                        list.Add(x.Id);
+                    }
+                    for (int i = 0; i < list.Count(); i++)
+                    {
+                        donhangchitiet = donhangchitiet + "Tên thực phẩm:" + db.DonHangChiTiet.Find(list[i]).TenThucPham +
+                                          "<br>Số lượng:" + db.DonHangChiTiet.Find(list[i]).SoLuong + "/kg" +
+                                          "<br>Giá tiền:" + db.DonHangChiTiet.Find(list[i]).Gia + "/VND" + "<br>";
+                    }
+                    for (int i = 0; i < list.Count(); i++)
+                    {
+                        tongtien = tongtien + db.DonHangChiTiet.Find(list[i]).Gia;
+                    }
+                    string noidung = "";
+                    noidung = "Đơn hàng " + donhang.Id + " từ khách hàng có mã là: " + donhang.KhachHangId + "<br>Với đơn hàng như sau:<br>"
+                        + donhangchitiet + "Tổng số tiền là: " + tongtien +
+                        "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
+                    FindShipper.LookingForShipper(donhang.X, donhang.Y, noidung, "YeuCauNhanDonHang-" + donhang.Id, donhang.Id);
                 }
-                for (int i = 0; i < list.Count(); i++)
+                catch (Exception ex)
                 {
-                    donhangchitiet = donhangchitiet + "Tên thực phẩm:" + db.DonHangChiTiet.Find(list[i]).TenThucPham +
-                                      "<br>Số lượng:" + db.DonHangChiTiet.Find(list[i]).SoLuong + "/kg" +
-                                      "<br>Giá tiền:" + db.DonHangChiTiet.Find(list[i]).Gia + "/VND" + "<br>";
+                    return Json("Không tìm được người đi chợ thích hợp");
                 }
-                for (int i = 0; i < list.Count(); i++)
-                {
-                    tongtien = tongtien + db.DonHangChiTiet.Find(list[i]).Gia;
-                }
-                string noidung = "";
-                noidung = "Đơn hàng " + donhang.Id + " từ khách hàng có mã là: " + donhang.KhachHangId + "<br>Với đơn hàng như sau:<br>" 
-                    + donhangchitiet  +"Tổng số tiền là: " + tongtien  +
-                    "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
-                FindShipper.LookingForShipper(donhang.X,donhang.Y, noidung, "YeuCauNhanDonHang-" + donhang.Id, donhang.Id);
             }
 
             
-            return Json("");
+            return Json("Nhận đơn hàng thành công");
             //try
             //{
             //    db.SaveChanges();
