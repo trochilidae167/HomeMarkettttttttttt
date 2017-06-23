@@ -11,11 +11,7 @@ namespace HomeMarket.Common
         public static double DistanceFrom(double p1latitude, double p1longitude,
                                           double p2latitude, double p2longitude)
         {
-            //double p1latitude = 10.7881681;
-            //double p1longitude = 106.6238654;
-            //double p2latitude = 10.768879;
-            //double p2longitude = 106.6351817;
-            var R = 6378137; // Earth’s mean radius in meter
+            var R = 6378137;
             var dLat = Deg2Rad(p1latitude - p2latitude);
             var dLong = Deg2Rad(p1longitude - p2longitude);
             var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
@@ -23,11 +19,8 @@ namespace HomeMarket.Common
               Math.Sin(dLong / 2) * Math.Sin(dLong / 2);
             var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
             var d = R * c;
-            return d; // returns the distance in meter
-        }
-
-
-        
+            return d; 
+        }        
         private static double Deg2Rad(double deg)
         {
             return (deg * Math.PI / 180.0);

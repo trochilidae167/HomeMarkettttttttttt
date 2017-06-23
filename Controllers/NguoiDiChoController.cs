@@ -137,6 +137,11 @@ namespace HomeMarket.Controllers
                 db.Entry(khachhang).State = EntityState.Modified;
               
                 db.SaveChanges();
+                if(nguoiDiCho.Status == true)
+                {
+                    string noidung = "Hệ thống đã xét duyệt thành công thông tin đăng ký làm người đi chợ của bạn! Bây giờ bạn có thể nhận các đơn hàng từ hệ thống!";
+                    Common.SendNotification.SendNotifications(noidung,"Thông báo từ hệ thống",nguoiDiCho.Id);
+                }
                 return RedirectToAction("Index");
             }
             return View(nguoiDiCho);

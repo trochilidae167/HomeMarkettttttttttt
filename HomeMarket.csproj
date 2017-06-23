@@ -141,6 +141,7 @@
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\FindShipper.cs" />
+    <Compile Include="Common\FindSupplier.cs" />
     <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\SendNotification.cs" />
     <Compile Include="Common\UserLogin.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Controllers\APIController\BangGiaSieuThiAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangAPIController.cs" />
     <Compile Include="Controllers\APIController\DonHangChiTietAPIController.cs" />
+    <Compile Include="Controllers\APIController\GetNhaCungUngAPIController.cs" />
     <Compile Include="Controllers\APIController\KhachHangAPIController.cs" />
     <Compile Include="Controllers\APIController\LoginAPIController.cs" />
     <Compile Include="Controllers\APIController\NguoiDiChoAPIController.cs" />
@@ -334,6 +336,7 @@
     <Compile Include="Models\GioiThieu.cs" />
     <Compile Include="Models\HomeMarketDbContext.cs" />
     <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\KhachHangOnline.cs" />
     <Compile Include="Models\LienHe.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\NguoiDiCho.cs" />

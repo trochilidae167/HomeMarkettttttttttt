@@ -33,15 +33,15 @@ namespace HomeMarket.Common
 
             {
 
-                to = RegArr,
+                to = RegArr, // RegArr là đoạn mã riêng dành cho mỗi Client
 
                 notification = new
 
                 {
 
-                    body = noidung,
+                    body = noidung,// nội dung của thông báo
 
-                    title = tieude,
+                    title = tieude,// tiêu đề của thông báo
                 }
             };
 

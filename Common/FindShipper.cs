@@ -9,9 +9,9 @@ namespace HomeMarket.Common
     public class FindShipper
     {
         private static HomeMarketDbContext db = new HomeMarketDbContext();
-        public static string LookingForShipper(double x, double y,string noidung,string tieude,int donhangId)
+        public static string LookingForShipper(double x, double y,string noidung,string tieude,int donhangId,int khachhangId)
         {
-            List<int> arr = db.NguoiDiChoOnline.Where(m => m.Online == true && m.Refuse != donhangId).Select(m => m.Id).ToList();
+            List<int> arr = db.NguoiDiChoOnline.Where(m => m.Online == true && m.Refuse != donhangId && m.Id != khachhangId).Select(m => m.Id).ToList();
             List<double> list = new List<double>();
             double d = 0;
             double result = 0;

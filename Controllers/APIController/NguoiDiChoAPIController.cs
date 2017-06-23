@@ -94,7 +94,8 @@ namespace HomeMarket.Controllers.APIController
             db.NguoiDiCho.Add(nguoiDiCho);
             db.NguoiDiChoOnline.Add(nguoidichoOnline);
             db.SaveChanges();
-
+            string noidung = "Hệ thống đang xét duyệt thông tin đăng ký làm người đi chợ của bạn! Kết quả sẽ có trong khoản thời gian sớm nhất!";
+            Common.SendNotification.SendNotifications(noidung, "Thông báo từ hệ thống", nguoiDiCho.Id);
             return CreatedAtRoute("DefaultApi", new { id = nguoiDiCho.Id }, nguoiDiCho);
         }
 

@@ -104,6 +104,7 @@ namespace HomeMarket.Controllers.APIController
                     db.Entry(nguoidichoOnline).State = EntityState.Modified;
                     nguoidichoOnline.Refuse = nhanDonHang.DonHangId;
                     db.SaveChanges();
+                    var ncu = db.NhaCungUng.SingleOrDefault(x => x.Id == donhang.NCUId);
                     string donhangchitiet = "";
                     List<int> list = new List<int>();
                     var m = db.DonHangChiTiet.Where(x => x.DonHangId == donhang.Id);
@@ -127,7 +128,7 @@ namespace HomeMarket.Controllers.APIController
                     noidung = "Đơn hàng " + donhang.Id + " từ khách hàng có mã là: " + donhang.KhachHangId + "<br>Với đơn hàng như sau:<br>"
                         + donhangchitiet + "Tổng số tiền là: " + tongtien +
                         "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
-                    FindShipper.LookingForShipper(donhang.X, donhang.Y, noidung, "YeuCauNhanDonHang-" + donhang.Id, donhang.Id);
+                    FindShipper.LookingForShipper(ncu.X, ncu.Y, noidung, "YeuCauNhanDonHang-" + donhang.Id, donhang.Id,donhang.KhachHangId);
                 }
                 catch (Exception ex)
                 {

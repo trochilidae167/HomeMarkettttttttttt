@@ -9,18 +9,25 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using HomeMarket.Models;
+using HomeMarket.Common;
 
 namespace HomeMarket.Controllers.APIController
 {
     public class NhaCungUngAPIController : ApiController
     {
         private HomeMarketDbContext db = new HomeMarketDbContext();
-
-        // GET: api/NhaCungUngAPI
-        public IQueryable<NhaCungUng> GetNhaCungUng()
-        {
-            return db.NhaCungUng;
-        }
+        //public class KhachHangOnline
+        //{
+        //    public double X { get; set; }
+        //    public double Y { get; set; }
+        //}
+        //// GET: api/NhaCungUngAPI
+        //public IQueryable<NhaCungUng> GetNhaCungUng(KhachHangOnline khachHangOnline)
+        //{
+        //    List<int> list = FindSupplier.LookingForSupplier(khachHangOnline.X,khachHangOnline.Y);
+        //    var ncu = db.NhaCungUng.Find(list);
+        //    return db.NhaCungUng;
+        //}
 
         // GET: api/NhaCungUngAPI/5
         [ResponseType(typeof(NhaCungUng))]
@@ -36,70 +43,70 @@ namespace HomeMarket.Controllers.APIController
         }
 
         // PUT: api/NhaCungUngAPI/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutNhaCungUng(int id, NhaCungUng nhaCungUng)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutNhaCungUng(int id, NhaCungUng nhaCungUng)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != nhaCungUng.Id)
-            {
-                return BadRequest();
-            }
+        //    if (id != nhaCungUng.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(nhaCungUng).State = EntityState.Modified;
+        //    db.Entry(nhaCungUng).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NhaCungUngExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!NhaCungUngExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/NhaCungUngAPI
-        [ResponseType(typeof(NhaCungUng))]
-        public IHttpActionResult PostNhaCungUng(NhaCungUng nhaCungUng)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(NhaCungUng))]
+        //public IHttpActionResult PostNhaCungUng(NhaCungUng nhaCungUng)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.NhaCungUng.Add(nhaCungUng);
-            db.SaveChanges();
+        //    db.NhaCungUng.Add(nhaCungUng);
+        //    db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = nhaCungUng.Id }, nhaCungUng);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = nhaCungUng.Id }, nhaCungUng);
+        //}
 
         // DELETE: api/NhaCungUngAPI/5
-        [ResponseType(typeof(NhaCungUng))]
-        public IHttpActionResult DeleteNhaCungUng(int id)
-        {
-            NhaCungUng nhaCungUng = db.NhaCungUng.Find(id);
-            if (nhaCungUng == null)
-            {
-                return NotFound();
-            }
+        //[ResponseType(typeof(NhaCungUng))]
+        //public IHttpActionResult DeleteNhaCungUng(int id)
+        //{
+        //    NhaCungUng nhaCungUng = db.NhaCungUng.Find(id);
+        //    if (nhaCungUng == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.NhaCungUng.Remove(nhaCungUng);
-            db.SaveChanges();
+        //    db.NhaCungUng.Remove(nhaCungUng);
+        //    db.SaveChanges();
 
-            return Ok(nhaCungUng);
-        }
+        //    return Ok(nhaCungUng);
+        //}
 
         protected override void Dispose(bool disposing)
         {
