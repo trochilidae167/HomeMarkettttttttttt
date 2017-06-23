@@ -76,6 +76,11 @@
         [Display(Name = "Trạng thái")]
         public bool Status { get; set; }
 
+
+        public double X { get; set; }
+
+        public double Y { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
 

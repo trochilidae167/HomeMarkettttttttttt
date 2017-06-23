@@ -325,6 +325,10 @@
     <Compile Include="Migrations\201706171525116_17-6-3.Designer.cs">
       <DependentUpon>201706171525116_17-6-3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706231649202_23-6.cs" />
+    <Compile Include="Migrations\201706231649202_23-6.Designer.cs">
+      <DependentUpon>201706231649202_23-6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangGiaCho.cs" />
     <Compile Include="Models\BangGiaSieuThi.cs" />
@@ -336,7 +340,6 @@
     <Compile Include="Models\GioiThieu.cs" />
     <Compile Include="Models\HomeMarketDbContext.cs" />
     <Compile Include="Models\KhachHang.cs" />
-    <Compile Include="Models\KhachHangOnline.cs" />
     <Compile Include="Models\LienHe.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\NguoiDiCho.cs" />
@@ -538,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706171525116_17-6-3.resx">
       <DependentUpon>201706171525116_17-6-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706231649202_23-6.resx">
+      <DependentUpon>201706231649202_23-6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
