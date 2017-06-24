@@ -88,3 +88,4 @@ D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Release\HomeMarket.Migrations._176.r
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Release\HomeMarket.Migrations._1762.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Release\HomeMarket.Migrations._1763.resources
 D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Release\HomeMarket.Migrations._236.resources
+D:\Vu\TLTN\Server\HomeMarket\HomeMarket\obj\Release\HomeMarket.csprojResolveAssemblyReference.cache

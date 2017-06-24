@@ -45,21 +45,7 @@ namespace HomeMarket.Controllers.APIController
                 return NotFound();
         }
 
-        // DELETE: api/NCUAPI/5
-        [ResponseType(typeof(KhachHang))]
-        public IHttpActionResult DeleteKhachHang(int id)
-        {
-            KhachHang khachHang = db.KhachHang.Find(id);
-            if (khachHang == null)
-            {
-                return NotFound();
-            }
-
-            db.KhachHang.Remove(khachHang);
-            db.SaveChanges();
-
-            return Ok(khachHang);
-        }
+       
 
         protected override void Dispose(bool disposing)
         {

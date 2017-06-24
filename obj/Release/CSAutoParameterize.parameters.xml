@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="HomeMaketDbContext-Web.config Connection String" description="HomeMaketDbContext Connection String used in web.config by the application to access the database." defaultValue="data source=.\SQLEXPRESS;initial catalog=HomeMarket;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Vu\\TLTN\\Server\\HomeMarket\\HomeMarket\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='HomeMaketDbContext']/@connectionString" />
+  </parameter>
+</parameters>
