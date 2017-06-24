@@ -23,10 +23,11 @@ namespace HomeMarket.Common
                 result = CalculateDistance.DistanceFrom(x, y, ncu.X, ncu.Y);
                 arr2[i, 0] = arr[i];
                 arr2[i, 1] = result;
-                if(result < 200000)
+                if (result < 200000)
                 {
                     list.Add(arr[i]);
                 }
+                //list.Add(arr[i]);
             }
             return list;
         }

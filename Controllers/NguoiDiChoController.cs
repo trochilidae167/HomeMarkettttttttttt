@@ -168,7 +168,9 @@ namespace HomeMarket.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             NguoiDiCho nguoiDiCho = db.NguoiDiCho.Find(id);
+            var nguoidichoOnline = db.NguoiDiChoOnline.SingleOrDefault(x => x.Id == id);
             db.NguoiDiCho.Remove(nguoiDiCho);
+            db.NguoiDiChoOnline.Remove(nguoidichoOnline);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

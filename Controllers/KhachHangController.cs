@@ -177,10 +177,19 @@ namespace HomeMarket.Controllers
             {
                 var nguoidicho = db.NguoiDiCho.SingleOrDefault(x => x.Id == id);
                 var nguoidichoOnline = db.NguoiDiChoOnline.SingleOrDefault(x => x.Id == id);
-                db.KhachHang.Remove(khachHang);
-                db.NguoiDiChoOnline.Remove(nguoidichoOnline);
-                db.NguoiDiCho.Remove(nguoidicho);
-                db.SaveChanges();
+                if(nguoidicho != null)
+                {
+                    db.KhachHang.Remove(khachHang);
+                    db.NguoiDiChoOnline.Remove(nguoidichoOnline);
+                    db.NguoiDiCho.Remove(nguoidicho);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.KhachHang.Remove(khachHang);
+                    db.NguoiDiChoOnline.Remove(nguoidichoOnline);
+                    db.SaveChanges();
+                }
             }
             else
             {
