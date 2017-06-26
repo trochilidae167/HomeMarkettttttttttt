@@ -35,7 +35,7 @@ namespace HomeMarket.Common
 
                 to = RegArr, // RegArr là đoạn mã riêng dành cho mỗi Client
 
-                notification = new
+                data = new
 
                 {
 

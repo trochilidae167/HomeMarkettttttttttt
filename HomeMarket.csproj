@@ -151,7 +151,6 @@
     <Compile Include="Controllers\APIController\DonHangChiTietAPIController.cs" />
     <Compile Include="Controllers\APIController\KhachHangAPIController.cs" />
     <Compile Include="Controllers\APIController\LoginAPIController.cs" />
-    <Compile Include="Controllers\APIController\NCUAPIController.cs" />
     <Compile Include="Controllers\APIController\NguoiDiChoAPIController.cs" />
     <Compile Include="Controllers\APIController\NguoiDiChoOnlineAPIController.cs" />
     <Compile Include="Controllers\APIController\NhaCungUngAPIController.cs" />

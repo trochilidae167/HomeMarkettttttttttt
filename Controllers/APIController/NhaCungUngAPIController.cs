@@ -16,18 +16,11 @@ namespace HomeMarket.Controllers.APIController
     public class NhaCungUngAPIController : ApiController
     {
         private HomeMarketDbContext db = new HomeMarketDbContext();
-        //public class KhachHangOnline
-        //{
-        //    public double X { get; set; }
-        //    public double Y { get; set; }
-        //}
-        //// GET: api/NhaCungUngAPI
-        //public IQueryable<NhaCungUng> GetNhaCungUng(KhachHangOnline khachHangOnline)
-        //{
-        //    List<int> list = FindSupplier.LookingForSupplier(khachHangOnline.X,khachHangOnline.Y);
-        //    var ncu = db.NhaCungUng.Find(list);
-        //    return db.NhaCungUng;
-        //}
+   
+        public IQueryable<NhaCungUng> GetNhaCungUng()
+        {
+            return db.NhaCungUng;
+        }
 
         // GET: api/NhaCungUngAPI/5
         [ResponseType(typeof(NhaCungUng))]
@@ -41,7 +34,23 @@ namespace HomeMarket.Controllers.APIController
 
             return Ok(nhaCungUng);
         }
-
+        [ResponseType(typeof(NhaCungUng))]
+        public IHttpActionResult PostNhaCungUng(NhaCungUng nhaCungUng)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var ncu = db.NhaCungUng.Where(x => x.Id == 1);
+            List<int> list = FindSupplier.LookingForSupplier(nhaCungUng.X, nhaCungUng.Y);
+            if (list != null)
+            {
+                ncu = db.NhaCungUng.Where(x => list.Contains(x.Id));
+                return Ok(ncu);
+            }
+            else
+                return NotFound();
+        }
         // PUT: api/NhaCungUngAPI/5
         //[ResponseType(typeof(void))]
         //public IHttpActionResult PutNhaCungUng(int id, NhaCungUng nhaCungUng)

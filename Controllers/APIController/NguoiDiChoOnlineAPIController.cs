@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using HomeMarket.Models;
+using HomeMarket.Common;
 
 namespace HomeMarket.Controllers.APIController
 {
@@ -71,50 +72,26 @@ namespace HomeMarket.Controllers.APIController
         }
 
         // POST: api/NguoiDiChoOnlineAPI
-        [ResponseType(typeof(NguoiDiChoOnlines))]
-        public IHttpActionResult PostNguoiDiChoOnlines(NguoiDiChoOnlines nguoiDiChoOnlines)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(KhachHang))]
+        //public IHttpActionResult PostKhachHang(KhachHang khachHang)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.NguoiDiChoOnline.Add(nguoiDiChoOnlines);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (NguoiDiChoOnlinesExists(nguoiDiChoOnlines.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = nguoiDiChoOnlines.Id }, nguoiDiChoOnlines);
-        }
+        //    List<int> list = FindSupplier.LookingForSupplier(khachHang.X, khachHang.Y);
+        //    if (list != null)
+        //    {
+        //        var ncu = db.NhaCungUng.Where(x => list.Contains(x.Id));
+        //        return Ok(ncu);
+        //    }
+        //    else
+        //        return NotFound();
+        //}
 
         // DELETE: api/NguoiDiChoOnlineAPI/5
-        [ResponseType(typeof(NguoiDiChoOnlines))]
-        public IHttpActionResult DeleteNguoiDiChoOnlines(int id)
-        {
-            NguoiDiChoOnlines nguoiDiChoOnlines = db.NguoiDiChoOnline.Find(id);
-            if (nguoiDiChoOnlines == null)
-            {
-                return NotFound();
-            }
-
-            db.NguoiDiChoOnline.Remove(nguoiDiChoOnlines);
-            db.SaveChanges();
-
-            return Ok(nguoiDiChoOnlines);
-        }
+      
 
         protected override void Dispose(bool disposing)
         {

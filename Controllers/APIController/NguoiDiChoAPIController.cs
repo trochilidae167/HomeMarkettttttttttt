@@ -83,20 +83,27 @@ namespace HomeMarket.Controllers.APIController
             {
                 return BadRequest(ModelState);
             }
-            nguoiDiCho.Status = false;
-            nguoiDiCho.NgayDangKy = DateTime.Now;
-            nguoiDiCho.DanhGia = 1;
-            NguoiDiChoOnlines nguoidichoOnline = new NguoiDiChoOnlines();
-            nguoidichoOnline.Id = nguoiDiCho.Id;
-            nguoidichoOnline.Online = false;
-            nguoidichoOnline.X = 0;
-            nguoidichoOnline.Y = 0;
-            db.NguoiDiCho.Add(nguoiDiCho);
-            db.NguoiDiChoOnline.Add(nguoidichoOnline);
-            db.SaveChanges();
-            string noidung = "Hệ thống đang xét duyệt thông tin đăng ký làm người đi chợ của bạn! Kết quả sẽ có trong khoản thời gian sớm nhất!";
-            Common.SendNotification.SendNotifications(noidung, "Thông báo từ hệ thống", nguoiDiCho.Id);
-            return CreatedAtRoute("DefaultApi", new { id = nguoiDiCho.Id }, nguoiDiCho);
+            var ndc = 0;
+            ndc = db.NguoiDiCho.Where(x => x.Id == nguoiDiCho.Id).Count();
+            if (ndc == 0)
+            {
+                nguoiDiCho.Status = false;
+                nguoiDiCho.NgayDangKy = DateTime.Now;
+                nguoiDiCho.DanhGia = 1;
+                NguoiDiChoOnlines nguoidichoOnline = new NguoiDiChoOnlines();
+                nguoidichoOnline.Id = nguoiDiCho.Id;
+                nguoidichoOnline.Online = false;
+                nguoidichoOnline.X = 0;
+                nguoidichoOnline.Y = 0;
+                db.NguoiDiCho.Add(nguoiDiCho);
+                db.NguoiDiChoOnline.Add(nguoidichoOnline);
+                db.SaveChanges();
+                string noidung = "Hệ thống đang xét duyệt thông tin đăng ký làm người đi chợ của bạn! Kết quả sẽ có trong khoản thời gian sớm nhất!";
+                Common.SendNotification.SendNotifications(noidung, "Thông báo từ hệ thống", nguoiDiCho.Id);
+                return Json("1");
+            }
+            else return Json("0");
+           
         }
 
         // DELETE: api/NguoiDiChoAPI/5

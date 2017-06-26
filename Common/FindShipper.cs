@@ -35,7 +35,7 @@ namespace HomeMarket.Common
                 }
             }
             var nguoidichothichhop = db.NguoiDiCho.SingleOrDefault(u => u.Id == arrmin);
-            Common.SendNotification.SendNotifications(noidung,tieude,nguoidichothichhop.Id);
+            SendNotification.SendNotifications(noidung,tieude,nguoidichothichhop.Id);
             string result1 = "Người đi chợ thích hợp là: "+nguoidichothichhop.Ten;
             return result1;
         }

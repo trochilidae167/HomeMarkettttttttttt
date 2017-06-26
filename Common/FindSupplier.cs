@@ -8,7 +8,7 @@ namespace HomeMarket.Common
 {
     public class FindSupplier
     {
-        private static HomeMarketDbContext db = new HomeMarketDbContext();
+        public static HomeMarketDbContext db = new HomeMarketDbContext();
         public static List<int> LookingForSupplier(double x, double y)
         {
             List<int> arr = db.NhaCungUng.Where(n=>n.Id != 0).Select(s=>s.Id).ToList();

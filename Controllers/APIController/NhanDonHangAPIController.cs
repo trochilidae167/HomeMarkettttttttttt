@@ -88,9 +88,9 @@ namespace HomeMarket.Controllers.APIController
                 db.NhanDonHang.Add(nhanDonHang);
                 db.SaveChanges();
                 string noidung = "Đơn hàng số " + nhanDonHang.DonHangId + "của bạn đã được Người đi chợ số " + nhanDonHang.NguoiDiChoId + "chấp nhận."
-                                  +"<br>Thông tin chi tiết Người đi chợ: "
-                                  +"<br>Họ tên: "+nguoidicho.Ten
-                                  +"<br>SĐT: "+nguoidicho.SDT;
+                                  +"\nThông tin chi tiết Người đi chợ: "
+                                  +"\nHọ tên: "+nguoidicho.Ten
+                                  +"\nSĐT: "+nguoidicho.SDT;
                 Common.SendNotification.SendNotifications(noidung,"NhanDonHang",donhang.KhachHangId);
                 nguoidicho.TaiKhoan = nguoidicho.TaiKhoan - 5000;
                 string trutaikhoan = "Tài khoản của bạn đã bị trừ 5000đ phí dịch vụ vì bạn đã nhận thực hiện đơn hàng số " + nhanDonHang.DonHangId;
@@ -117,17 +117,17 @@ namespace HomeMarket.Controllers.APIController
                     for (int i = 0; i < list.Count(); i++)
                     {
                         donhangchitiet = donhangchitiet + "Tên thực phẩm:" + db.DonHangChiTiet.Find(list[i]).TenThucPham +
-                                          "<br>Số lượng:" + db.DonHangChiTiet.Find(list[i]).SoLuong + "/kg" +
-                                          "<br>Giá tiền:" + db.DonHangChiTiet.Find(list[i]).Gia + "/VND" + "<br>";
+                                          "\nSố lượng:" + db.DonHangChiTiet.Find(list[i]).SoLuong + "/kg" +
+                                          "\nGiá tiền:" + db.DonHangChiTiet.Find(list[i]).Gia + "/VND" + "\n";
                     }
                     for (int i = 0; i < list.Count(); i++)
                     {
                         tongtien = tongtien + db.DonHangChiTiet.Find(list[i]).Gia;
                     }
                     string noidung = "";
-                    noidung = "Đơn hàng " + donhang.Id + " từ khách hàng có mã là: " + donhang.KhachHangId + "<br>Với đơn hàng như sau:<br>"
+                    noidung = "Đơn hàng " + donhang.Id + " từ khách hàng có mã là: " + donhang.KhachHangId + "\nVới đơn hàng như sau:\n"
                         + donhangchitiet + "Tổng số tiền là: " + tongtien +
-                        "Khách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
+                        "\nKhách hàng yêu cầu thực phẩm được mua ở: Siêu thị A";
                     FindShipper.LookingForShipper(donhang.X, donhang.Y, noidung, "YeuCauNhanDonHang-" + donhang.Id, donhang.Id,donhang.KhachHangId);
                 }
                 catch (Exception ex)
